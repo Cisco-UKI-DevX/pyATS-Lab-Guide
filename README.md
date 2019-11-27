@@ -56,7 +56,7 @@ As you go deeper and deeper into pyATS and Genie you'll begin to realise how pow
 
 ### Prequisites
 
-Before we get started with network automation we'll need a test environment, one of the easiest test environments you'll find is on the Cisco DevNet Sandbox which has multiple options. These are completely free and can in some cases be accessed within seconds. https://developer.cisco.com/docs/sandbox/#!overview/all-networking-sandboxes
+Before we get started with network testing and validation we'll need a to run our tests on. One of the easiest test environments you'll find is on the Cisco DevNet Sandbox which has multiple options. These are completely free and can in some cases be accessed within seconds. https://developer.cisco.com/docs/sandbox/#!overview/all-networking-sandboxes
 
 Most popular sandboxes include:
 
