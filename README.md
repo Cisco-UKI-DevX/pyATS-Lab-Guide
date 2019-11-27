@@ -109,4 +109,13 @@ The first thing anyone using pyATS needs to do is define a testbed file to outli
 
 `genie diff baseline/test-sandbox test-sandbox --output diff_dir`
 
+### Step 3 - Examine your output
+
+## Exercise 2 (Walk) - Automated test plans with the Robot framework
+
+TBC
+
+## Exercise 3 (Run) - Building your own test plans with raw Python
+
+TBC
 
