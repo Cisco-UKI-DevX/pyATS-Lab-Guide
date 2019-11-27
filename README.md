@@ -60,14 +60,14 @@ Current versions of Python with support for pyATS on Linux & MacOS systems. Wind
 - Python 3.6.x
 - Python 3.7.x
 
-`pip install pyats[library]` 
+Installing the pyATS library couldn't be simpiler, all you need to do is run the command `pip install pyats[library]` which should carry out the needed installation process.
 
 Verify the installation:
 
 > $ pip list | grep pyats
 > $ pip list | grep genie 
 
-When running pyATS its strongly recommended that it is done so from a virtual environment, a Virtual Environment, acts as isolated working copy of Python which allows you to work on a specific project without worry of affecting other projects. You can run pyATS outside one but its recommended that you use this method, as its super easy. To built your own virtual environment do the following
+When running pyATS its strongly recommended that it is done so from a virtual environment, a Virtual Environment, acts as isolated working copy of Python which allows you to work on a specific project without worry of affecting other projects. You can run pyATS outside one but its recommended that you use this method, as its super easy. To built your own virtual environment do the following:
 
 > $ mkdir test && cd test
 
@@ -76,10 +76,6 @@ When running pyATS its strongly recommended that it is done so from a virtual en
 > $ source bin/activate .
 
 Congratulations, you've sucessfully installed pyATS and set up your virtual environment. You're good to get started!
-
-
-
-
 
 ### Prequisites
 
@@ -96,3 +92,9 @@ Most popular sandboxes include:
 Please note you are free to use this with your own hardware or test environment. However the commands in this lab guide have been tested for the sandboxes they correspond to. For this lab guide we will be using the reservable IOS XE on CSR Recommended Code Sandbox which can be found on the Sandbox catalogue https://devnetsandbox.cisco.com/RM/Topology
 
 ![](https://github.com/sttrayno/Ansible-Lab-Guide/blob/master/images/sandbox-screen.png)
+
+Exercise 1 (Crawl) - Simple device test and validation with GenieCLI
+
+
+
+
