@@ -48,3 +48,24 @@ Out of the box, it comes with libraries that support:
 and allows the device connections via CLI, NETCONF, or RESTCONF.
 Additional support for 3rd-party platforms and other management protocols can be easily achieved through plugins and library extensions.
 
+As you go deeper and deeper into pyATS and Genie you'll begin to realise how powerful a tool it can be, if you'd like to go further than this guide please see the DevNet microsite on pyATS which is a fantastic resource and should be anyone who's trying to get hands on first port of call. https://developer.cisco.com/docs/pyats/#!pyats-genie-on-devnet/pyats-genie-on-devnet
+
+## Exercise 0 - Installing pyATS and Genie
+
+
+
+### Prequisites
+
+Before we get started with network automation we'll need a test environment, one of the easiest test environments you'll find is on the Cisco DevNet Sandbox which has multiple options. These are completely free and can in some cases be accessed within seconds. https://developer.cisco.com/docs/sandbox/#!overview/all-networking-sandboxes
+
+Most popular sandboxes include:
+
+- IOS-XE (CSR) - Always-On
+- IOS-CR - Always-On
+- Multi IOS test environment (VIRL based) - Reservation required
+- Cisco SD-WAN environment - Always-On
+- Cisco DNA-C environment - Always-On
+
+Please note you are free to use this with your own hardware or test environment. However the commands in this lab guide have been tested for the sandboxes they correspond to. For this lab guide we will be using the reservable IOS XE on CSR Recommended Code Sandbox which can be found on the Sandbox catalogue https://devnetsandbox.cisco.com/RM/Topology
+
+![](https://github.com/sttrayno/Ansible-Lab-Guide/blob/master/images/sandbox-screen.png)
