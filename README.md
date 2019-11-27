@@ -97,8 +97,9 @@ Please note you are free to use this with your own hardware or test environment.
 
 As touched upon earlier, the simpliest way to get started with the pyATS tools is by using the Genie CLI command line tools.
 
-### Step 1 - Builing your 
+### Step 1 - Builing your testbed file
 
+The first thing anyone using pyATS needs to do is define a testbed file to outline what the topology is and how pyATS can connect to it. I've included an example testbed file with just one device to connect to the sandbox environment outlined. You can find it within the `testbed` folder. I've also included a few extra ones in there so you can get the hang of the yaml format. If you're wishing to run this on another environment feel free to tweak the files included to suit your environment.
 
 ### Step 2 - Creating a baseline of a device
 
