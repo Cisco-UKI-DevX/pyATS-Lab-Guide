@@ -103,4 +103,10 @@ The first thing anyone using pyATS needs to do is define a testbed file to outli
 
 ### Step 2 - Creating a baseline of a device
 
+`genie learn all --testbed-file testbed-sandbox.yaml --output baseline/test-sandbox`
+
+`genie learn all --testbed-file testbed-sandbox.yaml --output latest/test-sandbox`
+
+`genie diff baseline/test-sandbox test-sandbox --output diff_dir`
+
 
