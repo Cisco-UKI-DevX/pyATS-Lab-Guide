@@ -64,16 +64,16 @@ Current versions of Python with support for pyATS on Linux & MacOS systems. Wind
 
 Verify the installation:
 
-$ pip list | grep pyats
-$ pip list | grep genie 
+> $ pip list | grep pyats
+> $ pip list | grep genie 
 
 When running pyATS its strongly recommended that it is done so from a virtual environment, a Virtual Environment, acts as isolated working copy of Python which allows you to work on a specific project without worry of affecting other projects. You can run pyATS outside one but its recommended that you use this method, as its super easy. To built your own virtual environment do the following
 
-$ mkdir test && cd test
+> $ mkdir test && cd test
 
-$ python3 -m venv .
+> $ python3 -m venv .
 
-$ source bin/activate .
+> $ source bin/activate .
 
 Congratulations, you've sucessfully installed pyATS and set up your virtual environment. You're good to get started!
 
