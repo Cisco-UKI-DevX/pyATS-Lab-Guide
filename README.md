@@ -93,7 +93,7 @@ Please note you are free to use this with your own hardware or test environment.
 
 ![](https://github.com/sttrayno/Ansible-Lab-Guide/blob/master/images/sandbox-screen.png)
 
-Exercise 1 (Crawl) - Simple device test and validation with GenieCLI
+## Exercise 1 (Crawl) - Simple device test and validation with GenieCLI
 
 
 
