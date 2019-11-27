@@ -95,6 +95,11 @@ Please note you are free to use this with your own hardware or test environment.
 
 ## Exercise 1 (Crawl) - Simple device test and validation with GenieCLI
 
+As touched upon earlier, the simpliest way to get started with the pyATS tools is by using the Genie CLI command line tools.
 
+### Step 1 - Builing your 
+
+
+### Step 2 - Creating a baseline of a device
 
 
