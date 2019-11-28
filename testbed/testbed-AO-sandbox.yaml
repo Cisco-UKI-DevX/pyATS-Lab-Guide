@@ -1,27 +1,25 @@
 testbed:
-
   name: pyats
 
   tacacs:
-      username: developer
+    username: developer
   passwords:
-      tacacs: C1sco12345
-      enable: C1sco12345
-      line: C1sco12345
+    tacacs: C1sco12345
+    enable: C1sco12345
+    line: C1sco12345
 
 devices:
-    csr1000v:
-      alias: CSRv
-      os: iosxe
-      type: csr1000v
-      connections:
-
-          defaults:
-            class: unicon.Unicon
-          console:
-            ip: "ios-xe-mgmt.cisco.com"
-            protocol: ssh
-            port: "8181"
-      custom:
-        abstraction:
-          order: [os, type]
+  csr1000v:
+    alias: CSRv
+    os: iosxe
+    type: csr1000v
+    connections:
+      defaults:
+        class: unicon.Unicon
+      console:
+        ip: "ios-xe-mgmt.cisco.com"
+        protocol: ssh
+        port: "8181"
+    custom:
+      abstraction:
+        order: [os, type]
