@@ -142,7 +142,9 @@ The genie tool also creates a file in which we can see what the exact difference
 
 ## Exercise 2 (Walk) - Automated test plans with the Robot framework
 
-TBC
+As you can see the diff functionality can save a large amount of manual work that would normally be required to compare configs and outputs from a device. What we'll explore in this exercise is how we can look to automate a complete test with the Robot framework of pyATS and produce an output that can viewed after the test to examine our scenario.
+
+First we'll need to install the robot framework add-on, to do this simply enter the command `pip install pyats[robot]` which will go off an install the necessary components.
 
 ## Exercise 3 (Run) - Building your own test plans with raw Python
 
