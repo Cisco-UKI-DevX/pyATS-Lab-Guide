@@ -148,7 +148,7 @@ First we'll need to install the robot framework add-on, to do this simply enter 
 
 Verify the installation:
 
-> \$ pip list | grep pyats
+> \$ pip list | grep robot
 
 ## Exercise 3 (Run) - Building your own test plans with raw Python
 
