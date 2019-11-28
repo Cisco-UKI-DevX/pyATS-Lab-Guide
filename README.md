@@ -113,7 +113,6 @@ To take a baseline of our test environment use the below command which specifies
 
 ![](https://github.com/sttrayno/pyATS-Lab-Guide/blob/master/images/pyats-baseline.gif)
 
-
 Lets log onto our router and make some changes, in this instance we have configured OSPF to advertise the network 1.1.1.0/24. As we did last time we're going to run the test again, learning all features of the router, the only difference this tims is specifying a different output path for our latest test. 
 
 ![](https://github.com/sttrayno/pyATS-Lab-Guide/blob/master/images/pyats-config.gif)
@@ -128,8 +127,14 @@ Now we've captured both reports
 
 ![](https://github.com/sttrayno/pyATS-Lab-Guide/blob/master/images/pyats-diff.gif)
 
-
 ### Step 3 - Examine your output
+
+As we can see from the bash output above, the Genie diff command takes all the outputs from our various tests (approx 30 at the time of writing) and compares the outputs. As would be expected most of these are identical except from the config (which we changed back in step 2 and the OSPF config, which is to be expected considering we configured OSPF. 
+
+The genie tool also creates a file in which we can see what the exact differences are from the files, therefore making it easy for us to understand that OSPF has been configured on the device since our last known baseline.
+
+![](https://github.com/sttrayno/pyATS-Lab-Guide/blob/master/images/pyats-diff-explore.gif)
+
 
 ## Exercise 2 (Walk) - Automated test plans with the Robot framework
 
