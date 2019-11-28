@@ -111,13 +111,23 @@ To take a baseline of our test environment use the below command which specifies
 
 `genie learn all --testbed-file testbed-sandbox.yaml --output baseline/test-sandbox`
 
+![](https://github.com/sttrayno/pyATS-Lab-Guide/blob/master/images/pyats-baseline.gif)
+
+
 Lets log onto our router and make some changes, in this instance we have configured OSPF to advertise the network 1.1.1.0/24. As we did last time we're going to run the test again, learning all features of the router, the only difference this tims is specifying a different output path for our latest test. 
 
+![](https://github.com/sttrayno/pyATS-Lab-Guide/blob/master/images/pyats-config.gif)
+
 `genie learn all --testbed-file testbed-sandbox.yaml --output latest/test-sandbox`
+
+![](https://github.com/sttrayno/pyATS-Lab-Guide/blob/master/images/pyats-latest.gif)
 
 Now we've captured both reports 
 
 `genie diff baseline/test-sandbox test-sandbox --output diff_dir`
+
+![](https://github.com/sttrayno/pyATS-Lab-Guide/blob/master/images/pyats-diff.gif)
+
 
 ### Step 3 - Examine your output
 
