@@ -1,20 +1,20 @@
 # Network test and validation with pyATS - Crawl / Walk / Run
 
-Network testing and validation tools is a massively growing area within network and infrastructure engineering, engineers and architects are looking for tools that answer questions 
+Network testing and validation tools is a massively growing area within network and infrastructure engineering, engineers and architects are looking for tools that answer questions
 
 - What has changed on the network config?
-- Is my dataplane operating the way that I would expect?
-- Can I compare my control plane and dataplane against a known good baseline?
+- Is my data plane operating the way that I would expect?
+- Can I compare my control plane and data plane against a known good baseline?
 - Can I automate this process across my entire estate
 
-Originally developed for internal Cisco engineering use, pyATS / Genie is at the core of Cisco's Test Automation Solution. Some interesting numbers on pyATS current use within Cisco:
+Originally developed for internal Cisco engineering use, pyATS/Genie is at the core of Cisco's Test Automation Solution. Some interesting numbers on pyATS current use within Cisco:
 
 - Used by 3000+ internal Cisco developers
 - Over 2,000,000 test runs on a monthly basis
 
 ![](https://pubhub.devnetcloud.com/media/pyats-genie-docs/docs/imgs/layers.png#developer.cisco.com)
 
-Before we get hands on theres a couple of core concepts we need to explain as you might have noticed we've been using pyATS and Genie almost interchangably, we need to explain these tools clearly
+Before we get hands on there are a couple of core concepts that we need to explain as you might have noticed we've been using pyATS and Genie almost interchangeably, we need to explain these tools clearly.
 
 ### pyATS
 
@@ -26,10 +26,11 @@ This powerful, highly-pluggable Python framework is designed to enable developer
 
 The simplest way to use pyATS
 
-Genie redefines how network engineers perform testing and scripting. It comes out of the box with all the bits needed for Network Test Automation. Meaning that network engineers and NetDevOps can be productive day one with Genie's readily available, holistic and model-driven libraries.
-Genie builds on pyATS to provide
+Genie redefines how network engineers perform testing and scripting. It comes out of the box with all the bits needed for Network Test Automation, meaning that network engineers and NetDevOps can be productive day one with Genie's readily available, holistic and model-driven libraries.
+Genie builds on pyATS to provide:
+
 - a simple command line interface (no Python knowledge needed)
-- a pool of reusable testcases
+- a pool of reusable test cases
 - a Pythonic library for more complex scripting
 
 For this lab we'll start using with using Genie and getting comfortable then move onto the flexibility that the pyATS framework offers.
@@ -44,11 +45,12 @@ Out of the box, it comes with libraries that support:
 - Cisco IOSXR
 - Cisco NXOS
 - Cisco ASA
+
 ... etc
 and allows the device connections via CLI, NETCONF, or RESTCONF.
 Additional support for 3rd-party platforms and other management protocols can be easily achieved through plugins and library extensions.
 
-As you go deeper and deeper into pyATS and Genie you'll begin to realise how powerful a tool it can be, if you'd like to go further than this guide please see the DevNet microsite on pyATS which is a fantastic resource and should be anyone who's trying to get hands on first port of call. https://developer.cisco.com/docs/pyats/#!pyats-genie-on-devnet/pyats-genie-on-devnet
+As you go deeper and deeper into pyATS and Genie you'll begin to realise how powerful a tool it can be. If you'd like to go further than this guide please see the DevNet webpage on pyATS which is a fantastic resource and should be anyone who's trying to get hands on first port of call. https://developer.cisco.com/docs/pyats/#!pyats-genie-on-devnet/pyats-genie-on-devnet
 
 ## Exercise 0 - Installing pyATS and Genie
 
@@ -60,26 +62,29 @@ Current versions of Python with support for pyATS on Linux & MacOS systems. Wind
 - Python 3.6.x
 - Python 3.7.x
 
-Installing the pyATS library couldn't be simpiler, all you need to do is run the command `pip install pyats[library]` which should carry out the needed installation process.
+Installing the pyATS library couldn't be simpler, all you need to do is run the command `pip install pyats[library]` which should carry out the needed installation process.
 
 Verify the installation:
 
-> $ pip list | grep pyats
-> $ pip list | grep genie 
+> \$ pip list | grep pyats
 
-When running pyATS its strongly recommended that it is done so from a virtual environment, a Virtual Environment, acts as isolated working copy of Python which allows you to work on a specific project without worry of affecting other projects. You can run pyATS outside one but its recommended that you use this method, as its super easy. To built your own virtual environment do the following:
+> \$ pip list | grep genie
 
-> $ mkdir test && cd test
+When running pyATS it is strongly recommended that it is done so from a virtual environment. A Virtual Environment acts as isolated working copy of Python which allows you to work on a specific project without worry of affecting other projects. While you can run pyATS outside a virtual environment, it is strongly recommended that you use this do not.
 
-> $ python3 -m venv .
+To get started with your own virtual environment, just do the following:
 
-> $ source bin/activate .
+> \$ mkdir test && cd test
 
-Congratulations, you've sucessfully installed pyATS and set up your virtual environment. You're good to get started!
+> \$ python3 -m venv .
+
+> \$ source bin/activate .
+
+Congratulations, you've successfully installed pyATS and set up your virtual environment. You're good to get started!
 
 ### Prequisites
 
-Before we get started with network testing and validation we'll need a to run our tests on. One of the easiest test environments you'll find is on the Cisco DevNet Sandbox which has multiple options. These are completely free and can in some cases be accessed within seconds. https://developer.cisco.com/docs/sandbox/#!overview/all-networking-sandboxes
+Before we get started with network testing and validation we'll need a network environment to run our tests on. One of the easiest test environments you'll find is on the Cisco DevNet Sandbox which has multiple options. These are completely free and can in some cases be accessed within seconds. https://developer.cisco.com/docs/sandbox/#!overview/all-networking-sandboxes
 
 Most popular sandboxes include:
 
@@ -95,25 +100,25 @@ Please note you are free to use this with your own hardware or test environment.
 
 ## Exercise 1 (Crawl) - Simple device test and validation with GenieCLI
 
-As touched upon earlier, the simpliest way to get started with the pyATS tools is by using the Genie CLI command line tools.
+As touched upon earlier, the simplest way to get started with the pyATS tools is by using the Genie CLI command line tools.
 
-### Step 1 - Builing your testbed file
+### Step 1 - Building your testbed file
 
-The first thing anyone using pyATS needs to do is define a testbed file to outline what the topology is and how pyATS can connect to it. I've included an example testbed file with just one device to connect to the sandbox environment outlined. You can find it within the `testbed` folder. I've also included a few extra ones in there so you can get the hang of the yaml format. If you're wishing to run this on another environment feel free to tweak the files included to suit your environment.
+The first thing anyone using pyATS needs to do is define a testbed file to outline what the topology is and how pyATS can connect to it. There is an example testbed file included with just one device to connect to the sandbox environment outlined. You can find it within the `testbed` folder. There are also a few extra ones in there so you can get the hang of the YAML format. If you want to run this on another environment feel free to tweak the files included to suit your environment.
 
-IMPORTANT: When buidling your inventory file ensure the alias value and hostname of your device match exactly. Trust me that will save you hours of troubleshooting :)
+IMPORTANT: When building your inventory file ensure the alias value and hostname of your device match exactly. Trust me that will save you hours of troubleshooting. :)
 
 ### Step 2 - Creating a baseline of a device
 
-Now we have our testbed file all thats left to do is run our test. When you you use the command `genie help` you'll notice that genie has a couple of different operating modes, in this lab we'll primarily focus on the `learn` and `diff` modes. 
+Now we have our testbed file all thats left to do is run our test. When you you use the command `genie help` you will notice that genie has a couple of different operating modes. In this lab we will primarily focus on the `learn` and `diff` modes.
 
-To take a baseline of our test environment use the below command which specifies we're looking to learn all features from the device, the testbed-file we need to use and where the test report will be outputed to.
+To take a baseline of our test environment use the below command which specifies we're looking to learn all features from the device, the testbed-file we need to use and where the test report file will be saved.
 
 `genie learn all --testbed-file testbed-sandbox.yaml --output baseline/test-sandbox`
 
 ![](https://github.com/sttrayno/pyATS-Lab-Guide/blob/master/images/pyats-baseline.gif)
 
-Lets log onto our router and make some changes, in this instance we have configured OSPF to advertise the network 1.1.1.0/24. As we did last time we're going to run the test again, learning all features of the router, the only difference this tims is specifying a different output path for our latest test. 
+Lets log onto our router and make some changes, in this instance we have configured OSPF to advertise the network 1.1.1.0/24. As we did last time we are going to run the test again, learning all features of the router, the only difference this time is specifying a different output path for our latest test.
 
 ![](https://github.com/sttrayno/pyATS-Lab-Guide/blob/master/images/pyats-config.gif)
 
@@ -121,7 +126,7 @@ Lets log onto our router and make some changes, in this instance we have configu
 
 ![](https://github.com/sttrayno/pyATS-Lab-Guide/blob/master/images/pyats-latest.gif)
 
-Now we've captured both reports 
+Now we have captured both reports
 
 `genie diff baseline/test-sandbox test-sandbox --output diff_dir`
 
@@ -129,12 +134,11 @@ Now we've captured both reports
 
 ### Step 3 - Examine your output
 
-As we can see from the bash output above, the Genie diff command takes all the outputs from our various tests (approx 30 at the time of writing) and compares the outputs. As would be expected most of these are identical except from the config (which we changed back in step 2 and the OSPF config, which is to be expected considering we configured OSPF. 
+As we can see from the bash output above, the Genie diff command takes all the outputs from our various tests (approx 30 at the time of writing) and compares the outputs. As would be expected most of these are identical except from the config (which we changed back in step 2) and the OSPF config, which is to be expected considering we configured OSPF.
 
 The genie tool also creates a file in which we can see what the exact differences are from the files, therefore making it easy for us to understand that OSPF has been configured on the device since our last known baseline.
 
 ![](https://github.com/sttrayno/pyATS-Lab-Guide/blob/master/images/pyats-diff-explore.gif)
-
 
 ## Exercise 2 (Walk) - Automated test plans with the Robot framework
 
@@ -143,4 +147,3 @@ TBC
 ## Exercise 3 (Run) - Building your own test plans with raw Python
 
 TBC
-
