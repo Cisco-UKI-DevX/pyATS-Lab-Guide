@@ -101,11 +101,21 @@ As touched upon earlier, the simpliest way to get started with the pyATS tools i
 
 The first thing anyone using pyATS needs to do is define a testbed file to outline what the topology is and how pyATS can connect to it. I've included an example testbed file with just one device to connect to the sandbox environment outlined. You can find it within the `testbed` folder. I've also included a few extra ones in there so you can get the hang of the yaml format. If you're wishing to run this on another environment feel free to tweak the files included to suit your environment.
 
+IMPORTANT:
+
 ### Step 2 - Creating a baseline of a device
+
+Now we have our testbed file all thats left to do is run our test. When you you use the command `genie help` you'll notice that genie has a couple of different operating modes, in this lab we'll primarily focus on the `learn` and `diff` modes. 
+
+To take a baseline of our test environment use the below command which specifies we're looking to learn all features from the device, the testbed-file we need to use and where the test report will be outputed to.
 
 `genie learn all --testbed-file testbed-sandbox.yaml --output baseline/test-sandbox`
 
+Lets log onto our router and make some changes, in this instance we have configured OSPF to advertise the network 1.1.1.0/24. As we did last time we're going to run the test again, learning all features of the router, the only difference this tims is specifying a different output path for our latest test. 
+
 `genie learn all --testbed-file testbed-sandbox.yaml --output latest/test-sandbox`
+
+Now we've captured both reports 
 
 `genie diff baseline/test-sandbox test-sandbox --output diff_dir`
 
