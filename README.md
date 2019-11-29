@@ -150,6 +150,10 @@ Verify the installation:
 
 > \$ pip list | grep robot
 
+The robot framework allows us to encorporate a bit more automation within our pyATS tests whilst abstracting away from some of the underlying Python which can be a barrier to entry for getting started with pyATS as we currently are. In this exercise we'll explore two Robot test plans which will automate the testing and reporting of our testbed environments.
+
+Lets take a further look at the testcases now. First open up the file robot_initial_snapshot.robot and you should see something similar to the below.
+
 ## Exercise 3 (Run) - Building your own test plans with raw Python
 
 TBC
