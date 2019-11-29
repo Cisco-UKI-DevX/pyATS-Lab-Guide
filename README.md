@@ -166,7 +166,9 @@ The second test is we're learning from the device with the profile, as we can se
 
 Finally you'll see this output of this profile being stored into the directory ./good_snapshot
 
+`Robot --outputdir run robot_initial_snapshot.robot`
 
+`Robot --outputdir run robot_compare_snapshot.robot`
 
 ## Exercise 3 (Run) - Building your own test plans with raw Python
 
