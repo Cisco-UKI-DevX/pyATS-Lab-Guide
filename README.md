@@ -154,6 +154,20 @@ The robot framework allows us to encorporate a bit more automation within our py
 
 Lets take a further look at the testcases now. First open up the file robot_initial_snapshot.robot and you should see something similar to the below.
 
+<insert image here>
+
+The first section is our settings, leave this as is for now as we only need to import our libraries
+
+The second section defines the variables, in this case we're only using the variable 'testbed' which is set as the path to our testbed file we used in Exercise 1.
+
+The next section is where it begins to get interesting, as you can see we have 2 tests that are being run, the first being a simple connection to the device being established.
+
+The second test is we're learning from the device with the profile, as we can see from the input we're looking to profile the config, interface, platform, ospf, arp, routing, vrf and vlan. These could be customised depending on what you're looking to learn. 
+
+Finally you'll see this output of this profile being stored into the directory ./good_snapshot
+
+
+
 ## Exercise 3 (Run) - Building your own test plans with raw Python
 
 TBC
