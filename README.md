@@ -167,6 +167,8 @@ The second test is we're learning from the device with the profile, as we can se
 
 `Robot --outputdir run robot_initial_snapshot.robot`
 
+![](./images/robot-initial.gif)	
+
 Run the test by using the command above and observe, we can see from the image below that the robot framework runs the two tests defined within our test case first to connect to device then to profile the device for the items specified. You should see both tests pass sucessfully and the directory populated with a number of files. The ones we're most interested in here are the ones within the run folder as shown below. The most important file is the report.html which if you open will show a webpage report from the test we just ran.
 
 Output:  /Users/sttrayno/pyats/robot_initial_snapshot/run/output.xml
@@ -177,6 +179,12 @@ Report:  /Users/sttrayno/pyats/robot_initial_snapshot/run/report.html
 
 
 `Robot --outputdir run robot_compare_snapshot.robot`
+
+![](./images/robot-compare.gif)	
+
+![](./images/robot-compare-gui.gif)	
+
+
 
 ## Exercise 3 (Run) - Building your own test plans with raw Python
 
