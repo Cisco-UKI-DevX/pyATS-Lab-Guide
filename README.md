@@ -177,6 +177,9 @@ Report:  /Users/sttrayno/pyats/robot_initial_snapshot/run/report.html
 
 ![](./images/robot-test-initial-gui.png)	
 
+![](./images/robot-compare-test.gif)	
+
+
 
 `Robot --outputdir run robot_compare_snapshot.robot`
 
