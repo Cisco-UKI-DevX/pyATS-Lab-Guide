@@ -140,6 +140,7 @@ The genie tool also creates a file in which we can see what the exact difference
 
 ![](./images/pyats-diff-explore.gif)
 
+
 ## Exercise 2 (Walk) - Automated test plans with the Robot framework
 
 As you can see the diff functionality can save a large amount of manual work that would normally be required to compare configs and outputs from a device. What we'll explore in this exercise is how we can look to automate a complete test with the Robot framework of pyATS and produce an output that can viewed after the test to examine our scenario.
@@ -154,7 +155,7 @@ The robot framework allows us to encorporate a bit more automation within our py
 
 Lets take a further look at the testcases now. First open up the file robot_initial_snapshot.robot and you should see something similar to the below.
 
-<insert image here>
+(./images/robot-test-initial.png)
 
 The first section is our settings, leave this as is for now as we only need to import our libraries
 
