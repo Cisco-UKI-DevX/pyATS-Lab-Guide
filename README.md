@@ -155,7 +155,7 @@ The robot framework allows us to encorporate a bit more automation within our py
 
 Lets take a further look at the testcases now. First open up the file robot_initial_snapshot.robot and you should see something similar to the below.
 
-(./images/robot-test-initial.png)
+![](./images/robot-test-initial.png)
 
 The first section is our settings, leave this as is for now as we only need to import our libraries
 
