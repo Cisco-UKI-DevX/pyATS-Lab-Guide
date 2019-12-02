@@ -163,11 +163,18 @@ The second section defines the variables, in this case we're only using the vari
 
 The next section is where it begins to get interesting, as you can see we have 2 tests that are being run, the first being a simple connection to the device being established.
 
-The second test is we're learning from the device with the profile, as we can see from the input we're looking to profile the config, interface, platform, ospf, arp, routing, vrf and vlan. These could be customised depending on what you're looking to learn. 
-
-Finally you'll see this output of this profile being stored into the directory ./good_snapshot
+The second test is we're learning from the device with the profile, as we can see from the input we're looking to profile the config, interface, platform, ospf, arp, routing, vrf and vlan. These could be customised depending on what you're looking to learn. Finally you'll see this output of this profile being stored into the directory ./good_snapshot
 
 `Robot --outputdir run robot_initial_snapshot.robot`
+
+Run the test by using the command above and observe, we can see from the image below that the robot framework runs the two tests defined within our test case first to connect to device then to profile the device for the items specified. You should see both tests pass sucessfully and the directory populated with a number of files. The ones we're most interested in here are the ones within the run folder as shown below. The most important file is the report.html which if you open will show a webpage report from the test we just ran.
+
+Output:  /Users/sttrayno/pyats/robot_initial_snapshot/run/output.xml
+Log:     /Users/sttrayno/pyats/robot_initial_snapshot/run/log.html
+Report:  /Users/sttrayno/pyats/robot_initial_snapshot/run/report.html
+
+![](./images/robot-test-initial.png)	
+
 
 `Robot --outputdir run robot_compare_snapshot.robot`
 
