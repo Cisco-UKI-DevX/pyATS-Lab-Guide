@@ -1,3 +1,7 @@
+> This guide is based from the NetDevOps Live S2 episode 6 pyATS demos by Simon Hart
+> https://www.youtube.com/watch?v=LbxfHWrujHc
+
+
 # Network test and validation with pyATS - Crawl / Walk / Run
 
 Network testing and validation tools is a massively growing area within network and infrastructure engineering, engineers and architects are looking for tools that answer questions
