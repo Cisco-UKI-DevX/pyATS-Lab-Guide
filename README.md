@@ -1,4 +1,4 @@
-> This guide is based from the NetDevOps Live S2 episode 6 pyATS demos by Simon Hart
+> This guide is based from the NetDevOps Live S2 episode 6 pyATS/Genie demos by Simon Hart, credit to Simon for his fantastic content
 > https://www.youtube.com/watch?v=LbxfHWrujHc
 
 
