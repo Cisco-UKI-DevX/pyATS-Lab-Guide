@@ -1,7 +1,6 @@
 > This guide is based from the NetDevOps Live S2 episode 6 pyATS/Genie demos by Simon Hart, credit to Simon for his fantastic content
 > https://www.youtube.com/watch?v=LbxfHWrujHc
 
-
 # Network test and validation with pyATS - Crawl / Walk / Run
 
 Network testing and validation tools is a massively growing area within network and infrastructure engineering, engineers and architects are looking for tools that answer questions
@@ -70,23 +69,33 @@ Installing the pyATS library couldn't be simpler, all you need to do is run the 
 
 Verify the installation:
 
-> \$ pip list | grep pyats
+```bash
+pip list | grep pyats
+```
 
-> \$ pip list | grep genie
+```bash
+pip list | grep genie
+```
 
 When running pyATS it is strongly recommended that it is done so from a virtual environment. A Virtual Environment acts as isolated working copy of Python which allows you to work on a specific project without worry of affecting other projects. While you can run pyATS outside a virtual environment, it is strongly recommended that you use this do not.
 
 To get started with your own virtual environment, just do the following:
 
-> \$ mkdir test && cd test
+```bash
+mkdir test && cd test
+```
 
-> \$ python3 -m venv .
+```bash
+python3 -m venv .
+```
 
-> \$ source bin/activate .
+```bash
+source bin/activate .
+```
 
 Congratulations, you've successfully installed pyATS and set up your virtual environment. You're good to get started!
 
-### Prequisites
+### Prerequisites
 
 Before we get started with network testing and validation we'll need a network environment to run our tests on. One of the easiest test environments you'll find is on the Cisco DevNet Sandbox which has multiple options. These are completely free and can in some cases be accessed within seconds. https://developer.cisco.com/docs/sandbox/#!overview/all-networking-sandboxes
 
@@ -118,7 +127,9 @@ Now we have our testbed file all thats left to do is run our test. When you you 
 
 To take a baseline of our test environment use the below command which specifies we're looking to learn all features from the device, the testbed-file we need to use and where the test report file will be saved.
 
-`genie learn all --testbed-file testbed-sandbox.yaml --output baseline/test-sandbox`
+```bash
+genie learn all --testbed-file testbed-sandbox.yaml --output baseline/test-sandbox
+```
 
 ![](./images/pyats-baseline.gif)
 
@@ -126,13 +137,17 @@ Lets log onto our router and make some changes, in this instance we have configu
 
 ![](./images/pyats-config.gif)
 
-`genie learn all --testbed-file testbed-sandbox.yaml --output latest/test-sandbox`
+```bash
+genie learn all --testbed-file testbed-sandbox.yaml --output latest/test-sandbox
+```
 
 ![](./images/pyats-latest.gif)
 
 Now we have captured both reports
 
-`genie diff baseline/test-sandbox test-sandbox --output diff_dir`
+```bash
+genie diff baseline/test-sandbox test-sandbox --output diff_dir
+```
 
 ![](./images/pyats-diff.gif)
 
@@ -144,7 +159,6 @@ The genie tool also creates a file in which we can see what the exact difference
 
 ![](./images/pyats-diff-explore.gif)
 
-
 ## Exercise 2 (Walk) - Automated test plans with the Robot framework
 
 ### Step 0 - Make sure Robot framework is installed
@@ -155,13 +169,15 @@ First we'll need to install the robot framework add-on, to do this simply enter 
 
 Verify the installation:
 
-> \$ pip list | grep robot
+```bash
+pip list | grep robot
+```
 
 ### Step 1 - Running our initial testcase
 
-The robot framework allows us to encorporate a bit more automation within our pyATS tests whilst abstracting away from some of the underlying Python which can be a barrier to entry for getting started with pyATS as we currently are. In this exercise we'll explore two Robot test plans which will automate the testing and reporting of our testbed environments.
+The robot framework allows us to incorporate a bit more automation within our pyATS tests whilst abstracting away from some of the underlying Python which can be a barrier to entry for getting started with pyATS as we currently are. In this exercise we'll explore two Robot test plans which will automate the testing and reporting of our testbed environments.
 
-Lets take a further look at the testcases now. First open up the file robot_initial_snapshot.robot and you should see something similar to the below.
+Lets take a further look at the test cases now. First open up the file robot_initial_snapshot.robot and you should see something similar to the below.
 
 ![](./images/robot-test-initial.png)
 
@@ -171,47 +187,57 @@ The second section defines the variables, in this case we're only using the vari
 
 The next section is where it begins to get interesting, as you can see we have 2 tests that are being run, the first being a simple connection to the device being established.
 
-The second test is we're learning from the device with the profile, as we can see from the input we're looking to profile the config, interface, platform, ospf, arp, routing, vrf and vlan. These could be customised depending on what you're looking to learn. Finally you'll see this output of this profile being stored into the directory ./good_snapshot
+The second test is we're learning from the device with the profile, as we can see from the input we're looking to profile the config, interface, platform, OSPF, arp, routing, vrf and VLAN. These could be customized depending on what you're looking to learn. Finally you'll see this output of this profile being stored into the directory ./good_snapshot
 
-`Robot --outputdir run robot_initial_snapshot.robot`
+```bash
+Robot --outputdir run robot_initial_snapshot.robot
+```
 
-![](./images/robot-initial.gif)	
+![](./images/robot-initial.gif)
 
-Run the test by using the command above and observe, we can see from the image below that the robot framework runs the two tests defined within our test case first to connect to device then to profile the device for the items specified. You should see both tests pass sucessfully and the directory populated with a number of files. The ones we're most interested in here are the ones within the run folder as shown below. The most important file is the report.html which if you open will show a webpage report from the test we just ran.
+Run the test by using the command above and observe, we can see from the image below that the robot framework runs the two tests defined within our test case first to connect to device then to profile the device for the items specified. You should see both tests pass successfully and the directory populated with a number of files. The ones we're most interested in here are the ones within the run folder as shown below. The most important file is the report.html which if you open will show a webpage report from the test we just ran.
 
-> Output:  /Users/sttrayno/pyats/robot_initial_snapshot/run/output.xml
+```bash
+Output: /Users/sttrayno/pyats/robot_initial_snapshot/run/output.xml
+```
 
-> Log:     /Users/sttrayno/pyats/robot_initial_snapshot/run/log.html
+```bash
+Log: /Users/sttrayno/pyats/robot_initial_snapshot/run/log.html
+```
 
-> Report:  /Users/sttrayno/pyats/robot_initial_snapshot/run/report.html
+```bash
+Report: /Users/sttrayno/pyats/robot_initial_snapshot/run/report.html
+```
 
-![](./images/robot-test-initial-gui.png)	
+![](./images/robot-test-initial-gui.png)
 
-### Step 2 - Running our comparison testcase
+### Step 2 - Running our comparison test case
 
-Now we've ran our first basic testcase we've got to grips with how the robot framework works and what kind of output it produces, now it's time to start using it in anger.  First off lets take a look at the `robot_compare_snapshot.robot` file that's in our testcase directory. As you you can see its remarkably similiar to the initial test case, it imports the libraries, declares our variables, has a test outlined to connected to device and another to profile the device. However theres one slight difference, as you can see at the bottom of the testcase we have another test outlined called "Compare snapshots" 
+Now we've ran our first basic test case we've got to grips with how the robot framework works and what kind of output it produces, now it's time to start using it in anger. First off lets take a look at the `robot_compare_snapshot.robot` file that's in our test case directory. As you you can see its remarkably similar to the initial test case, it imports the libraries, declares our variables, has a test outlined to connected to device and another to profile the device. However theres one slight difference, as you can see at the bottom of the test case we have another test outlined called 'Compare snapshots'.
 
 Quite simply the purpose of this is to create a comparison of our existing snapshot and the most modern one and look for differences in the outputs collected, should no differences be found the test will pass and if a difference is found the test will fail. Simple enough!
 
 As we're looking to compare from our baseline to our most recent snapshot it might be a good idea to change some config on the device, configure something on the device (OSPF is my normal go to).
 
-![](./images/compare-test.png)	
+![](./images/compare-test.png)
 
-Now we understand what the testcase is doing lets run the profile. Use the command below, this time passing the compare testcase we just looked at.
+Now we understand what the test case is doing lets run the profile. Use the command below, this time passing the compare test case we just looked at.
 
-`Robot --outputdir run robot_compare_snapshot.robot`
+```bash
+Robot --outputdir run robot_compare_snapshot.robot`
+```
 
-![](./images/robot-compare.gif)	
+![](./images/robot-compare.gif)
 
 As you can see the robot framework runs the tests in order, first connecting to the device and profiling our device for the features specified. This time however we should see the test fail, Don't panic, this should be expected as when running the comparison test pyATS will encounter a difference in the configuration.
 
 Once again, examine the "report.html" within the run directory. You should see an output similar to the below:
 
-![](./images/robot-compare-gui.gif)	
+![](./images/robot-compare-gui.gif)
 
-Should you have not made any config changes on the device this test would run sucessfully and we'd get another output similar to the report in Step 1.
+If you have not made any config changes on the device this test would run successfully and we'd get another output similar to the report in Step 1.
 
-Congratulations, you should now have a grasp of the very basics of the Robot framework. 
+Congratulations, you should now have a grasp of the very basics of the Robot framework.
 
 ## Exercise 3 (Run) - Building your own test plans with raw Python
 
