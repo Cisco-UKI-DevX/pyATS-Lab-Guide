@@ -143,6 +143,8 @@ The genie tool also creates a file in which we can see what the exact difference
 
 ## Exercise 2 (Walk) - Automated test plans with the Robot framework
 
+### Step 0 - Make sure Robot framework is installed
+
 As you can see the diff functionality can save a large amount of manual work that would normally be required to compare configs and outputs from a device. What we'll explore in this exercise is how we can look to automate a complete test with the Robot framework of pyATS and produce an output that can viewed after the test to examine our scenario.
 
 First we'll need to install the robot framework add-on, to do this simply enter the command `pip install pyats[robot]` which will go off an install the necessary components.
@@ -150,6 +152,8 @@ First we'll need to install the robot framework add-on, to do this simply enter 
 Verify the installation:
 
 > \$ pip list | grep robot
+
+### Step 1 - Running our initial testcase
 
 The robot framework allows us to encorporate a bit more automation within our pyATS tests whilst abstracting away from some of the underlying Python which can be a barrier to entry for getting started with pyATS as we currently are. In this exercise we'll explore two Robot test plans which will automate the testing and reporting of our testbed environments.
 
@@ -177,17 +181,31 @@ Report:  /Users/sttrayno/pyats/robot_initial_snapshot/run/report.html
 
 ![](./images/robot-test-initial-gui.png)	
 
+### Step 2 - Running our comparison testcase
+
+Now we've ran our first basic testcase we've got to grips with how the robot framework works and what kind of output it produces, now it's time to start using it in anger.  First off lets take a look at the `robot_compare_snapshot.robot` file that's in our testcase directory. As you you can see its remarkably similiar to the initial test case, it imports the libraries, declares our variables, has a test outlined to connected to device and another to profile the device. However theres one slight difference, as you can see at the bottom of the testcase we have another test outlined called "Compare snapshots" 
+
+Quite simply the purpose of this is to create a comparison of our existing snapshot and the most modern one and look for differences in the outputs collected, should no differences be found the test will pass and if a difference is found the test will fail. Simple enough!
+
+As we're looking to compare from our baseline to our most recent snapshot it might be a good idea to change some config on the device, configure something on the device (OSPF is my normal go to).
+
 ![](./images/compare-test.png)	
 
-
+Now we understand what the testcase is doing lets run the profile. Use the command below, this time passing the compare testcase we just looked at.
 
 `Robot --outputdir run robot_compare_snapshot.robot`
 
 ![](./images/robot-compare.gif)	
 
+As you can see the robot framework runs the tests in order, first connecting to the device and profiling our device for the features specified. This time however we should see the test fail, Don't panic, this should be expected as when running the comparison test pyATS will encounter a difference in the configuration.
+
+Once again, examine the "report.html" within the run directory. You should see an output similar to the below:
+
 ![](./images/robot-compare-gui.gif)	
 
+Should you have not made any config changes on the device this test would run sucessfully and we'd get another output similar to the report in Step 1.
 
+Congratulations, you should now have a grasp of the very basics of the Robot framework. 
 
 ## Exercise 3 (Run) - Building your own test plans with raw Python
 
