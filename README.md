@@ -173,7 +173,7 @@ Output:  /Users/sttrayno/pyats/robot_initial_snapshot/run/output.xml
 Log:     /Users/sttrayno/pyats/robot_initial_snapshot/run/log.html
 Report:  /Users/sttrayno/pyats/robot_initial_snapshot/run/report.html
 
-![](./images/robot-test-initial.png)	
+![](./images/robot-test-initial-gui.png)	
 
 
 `Robot --outputdir run robot_compare_snapshot.robot`
