@@ -3,18 +3,18 @@
 
 # Network test and validation with pyATS - Crawl / Walk / Run
 
-Network testing and validation tools is a massively growing area within network and infrastructure engineering, engineers and architects are looking for tools that answer questions
+Network testing and validation tools is a massively growing area within network and infrastructure engineering. Engineers and architects are looking for tools that answer questions such as:
 
 - What has changed on the network config?
 - Is my data plane operating the way that I would expect?
 - Can I compare my control plane and data plane against a known good baseline?
-- Can I automate this process across my entire estate
+- Can I automate this process across my entire estate?
 
 Originally developed for internal Cisco engineering use, pyATS/Genie is at the core of Cisco's Test Automation Solution. Some interesting numbers on pyATS current use within Cisco:
 
 - Used by 3000+ internal Cisco developers
 - Over 2,000,000 test runs on a monthly basis
-
+ 
 ![](https://pubhub.devnetcloud.com/media/pyats-genie-docs/docs/imgs/layers.png#developer.cisco.com)
 
 Before we get hands on there are a couple of core concepts that we need to explain as you might have noticed we've been using pyATS and Genie almost interchangeably, we need to explain these tools clearly.
@@ -30,6 +30,7 @@ This powerful, highly-pluggable Python framework is designed to enable developer
 The simplest way to use pyATS
 
 Genie redefines how network engineers perform testing and scripting. It comes out of the box with all the bits needed for Network Test Automation, meaning that network engineers and NetDevOps can be productive day one with Genie's readily available, holistic and model-driven libraries.
+
 Genie builds on pyATS to provide:
 
 - a simple command line interface (no Python knowledge needed)
@@ -57,7 +58,7 @@ As you go deeper and deeper into pyATS and Genie you'll begin to realise how pow
 
 ## Exercise 0 - Installing pyATS and Genie
 
-First thing to do is to make sure your system has a supported version of Python for pyATS, you can find out your installed version of python by running the `python --version`
+First thing to do is to make sure your system has a supported version of Python for pyATS, you can find out your installed version by running the `python --version`
 
 Current versions of Python with support for pyATS on Linux & MacOS systems. Windows platforms are currently not supported:
 
@@ -77,7 +78,7 @@ pip list | grep pyats
 pip list | grep genie
 ```
 
-When running pyATS it is strongly recommended that it is done so from a virtual environment. A Virtual Environment acts as isolated working copy of Python which allows you to work on a specific project without worry of affecting other projects. While you can run pyATS outside a virtual environment, it is strongly recommended that you use this do not.
+When running pyATS it is strongly recommended that it is done so from a virtual environment. A Virtual Environment acts as isolated working copy of Python which allows you to work on a specific project without worry of affecting other projects. While you can run pyATS outside a virtual environment, it is strongly recommended that you use this as it creates an isolated environment for our exercise and allows us to create it's can have its own dependencies, regardless of what other packages are installed on the system.
 
 To get started with your own virtual environment, just do the following:
 
@@ -153,7 +154,7 @@ genie diff baseline/test-sandbox test-sandbox --output diff_dir
 
 ### Step 3 - Examine your output
 
-As we can see from the bash output above, the Genie diff command takes all the outputs from our various tests (approx 30 at the time of writing) and compares the outputs. As would be expected most of these are identical except from the config (which we changed back in step 2) and the OSPF config, which is to be expected considering we configured OSPF.
+As we can see from the bash output above, the Genie diff command takes all the outputs from our various tests (approx 30 at the time of writing) and compares the outputs. As would be expected most of these are identical except from the config (which we changed back in step 2) and the OSPF config, which is to be expected... considering we configured OSPF.
 
 The genie tool also creates a file in which we can see what the exact differences are from the files, therefore making it easy for us to understand that OSPF has been configured on the device since our last known baseline.
 
