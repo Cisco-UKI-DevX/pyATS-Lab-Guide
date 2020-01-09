@@ -1,6 +1,8 @@
 > This guide is based from the NetDevOps Live S2 episode 6 pyATS/Genie demos by Simon Hart, credit to Simon for his fantastic content
 > https://www.youtube.com/watch?v=LbxfHWrujHc
 
+*This lab is part of a series of guides from the [Network Automation and Tooling workshop series](https://github.com/sttrayno/Network-Automation-Tooling)*
+
 # Network test and validation with pyATS - Crawl / Walk / Run
 
 Network testing and validation tools is a massively growing area within network and infrastructure engineering. Engineers and architects are looking for tools that answer questions such as:
