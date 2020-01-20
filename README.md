@@ -5,7 +5,7 @@
 
 # Network test and validation with pyATS - Crawl / Walk / Run
 
-Network testing and validation tools is a massively growing area within network and infrastructure engineering. Engineers and architects are looking for tools that answer questions such as:
+Network testing and validation tools is a massively growing area within network and infrastructure engineering. When you look at the rise in network automation and the move towards NetDevOps and CICD pipelines for the network the need for tools that can carry out test and validation of the network is extremely important. pyATS looks to answer questions such as:
 
 - What has changed on the network config?
 - Is my data plane operating the way that I would expect?
