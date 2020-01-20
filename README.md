@@ -56,7 +56,7 @@ Out of the box, it comes with libraries that support:
 and allows the device connections via CLI, NETCONF, or RESTCONF.
 Additional support for 3rd-party platforms and other management protocols can be easily achieved through plugins and library extensions.
 
-As you go deeper and deeper into pyATS and Genie you'll begin to realise how powerful a tool it can be. If you'd like to go further than this guide please see the DevNet webpage on pyATS which is a fantastic resource and should be anyone who's trying to get hands on first port of call. https://developer.cisco.com/docs/pyats/#!pyats-genie-on-devnet/pyats-genie-on-devnet
+As you go deeper and deeper into pyATS and Genie you'll start to realise how many scenarios it could be applied to. If you'd like to go further than this guide please see the DevNet webpage on pyATS which is a fantastic resource and should be anyone who's trying to get hands on first port of call. https://developer.cisco.com/docs/pyats/#!pyats-genie-on-devnet/pyats-genie-on-devnet
 
 ## Exercise 0 - Installing pyATS and Genie
 
