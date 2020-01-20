@@ -3,7 +3,7 @@
 
 *This lab is part of a series of guides from the [Network Automation and Tooling workshop series](https://github.com/sttrayno/Network-Automation-Tooling)*
 
-# Network test and validation with pyATS - Crawl / Walk / Run
+# Network test and validation with pyATS 
 
 Network testing and validation tools is a massively growing area within network and infrastructure engineering. When you look at the rise in network automation and the move towards NetDevOps and CICD pipelines for the network the need for tools that can carry out test and validation of the network is extremely important. pyATS looks to answer questions such as:
 
@@ -242,6 +242,3 @@ If you have not made any config changes on the device this test would run succes
 
 Congratulations, you should now have a grasp of the very basics of the Robot framework.
 
-## Exercise 3 (Run) - Building your own test plans with raw Python
-
-TBC
