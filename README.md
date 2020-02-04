@@ -68,7 +68,7 @@ Current versions of Python with support for pyATS on Linux & MacOS systems. Wind
 - Python 3.6.x
 - Python 3.7.x
 
-Installing the pyATS library couldn't be simpler, all you need to do is run the command `pip install pyats[library]` which should carry out the needed installation process.
+Installing the pyATS library couldn't be simpler, all you need to do is run the command `pip install pyats[full]` which should carry out the needed installation process.
 
 Verify the installation:
 
