@@ -114,7 +114,7 @@ Please note you are free to use this with your own hardware or test environment.
 
 ![](https://github.com/sttrayno/Ansible-Lab-Guide/blob/master/images/sandbox-screen.png)
 
-## Exercise 1 (Crawl) - Simple device test and validation with GenieCLI
+## Exercise 1 - Simple device test and validation with GenieCLI
 
 As touched upon earlier, the simplest way to get started with the pyATS tools is by using the Genie CLI command line tools.
 
@@ -162,7 +162,7 @@ The genie tool also creates a file in which we can see what the exact difference
 
 ![](./images/pyats-diff-explore.gif)
 
-## Exercise 2 (Walk) - Automated test plans with the Robot framework
+## Exercise 2 - Automated test plans with the Robot framework
 
 ### Step 0 - Make sure Robot framework is installed
 
@@ -242,3 +242,12 @@ If you have not made any config changes on the device this test would run succes
 
 Congratulations, you should now have a grasp of the very basics of the Robot framework.
 
+## Exercise 3 - Building custom tests with the pyATS python libraries
+
+Now we have an understanding of what pyATS actually does, it's time to build on this with the pyATS libraries. As you should of now seen, one of the strengths of pyATS is the extremely powerful parsers and models which allow us to collect raw data from the CLI into abstracted JSON data models which then allow us to do comparisons and test for specific criteria.
+
+For this section
+
+# Exercise 4 - Implementing the pyATS test framework
+
+# Exercise 5 - Using the Xpresso GUI
