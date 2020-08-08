@@ -248,6 +248,6 @@ Now we have an understanding of what pyATS actually does, it's time to build on 
 
 For this section
 
-# Exercise 4 - Implementing the pyATS test framework
+## Exercise 4 - Implementing the pyATS test framework
 
-# Exercise 5 - Using the Xpresso GUI
+## Exercise 5 - Using the Xpresso GUI
