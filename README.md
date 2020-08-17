@@ -267,11 +267,13 @@ dev = tb.devices['csr1000v']       # Define an object called dev from the device
 dev.connect()      # Connect to the object dev we defined earlier -  this must be done before parsing to the device
 
 
-p1 = dev.parse('show ip route')        # Run the command "show ip route" on the device and parse the output to JSON
+routingTable = dev.parse('show ip route')        # Run the command "show ip route" on the device and parse the output to JSON
 
 ```
 
-As you become more adept with Python you'll see more 
+As you become more adept with Python you'll begin to understand how you can start to structure your test cases to become more efficent, for example to loop round every device in the testbed or to test specific devices based on their attributes. But for now we'll focus on building our tests on just one device and keep things simple. 
+
+
 
 ## Exercise 4 - Implementing the pyATS test framework
 
