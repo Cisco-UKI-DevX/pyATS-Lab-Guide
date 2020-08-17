@@ -246,6 +246,8 @@ Congratulations, you should now have a grasp of the very basics of the Robot fra
 
 Now we have an understanding of what pyATS actually does, it's time to build on this with the pyATS libraries. As you should of now seen, one of the strengths of pyATS is the extremely powerful parsers and models which allow us to collect raw data from the CLI into abstracted JSON data models which then allow us to do comparisons and test for specific criteria. When using the pyATS CLI we're limited in what we can do to just a few commands and basic comparisons. However as the pyATS libraries are built on top of python we can actually use them to build more complex rest cases. In this section we'll explore some of the capabilities of the pyATS framework and how we can start to built our own custom tests for devices.
 
+To be fully proficent in using the pyATS framework you will need to be good with Python. However, don't worry if you're not fully comfortable with Python as this guide will attempt to take it nice and slow and build it up. Although hopefully this guide will motivate you to become more proficent with Python.
+
 For this session we will be using text files to read and parse device output from. However connecting to a device in order to run commands is simple. You would use the following:
 
 ```python
@@ -260,7 +262,7 @@ p1 = dev.parse('show ip route')        # Run the command "show ip route" on the 
 
 ```
 
-As you become more adept
+As you become more adept with Python you'll see more 
 
 ## Exercise 4 - Implementing the pyATS test framework
 
