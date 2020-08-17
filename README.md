@@ -250,15 +250,17 @@ For this session we will be using text files to read and parse device output fro
 
 ```python
 
-tb = load('./testbed/testbed-sandbox.yaml')
-dev = tb.devices['csr1000v']
+tb = load('./testbed/testbed-sandbox.yaml')       # Load our testbed file from a file.
+dev = tb.devices['csr1000v']       # Define an object called dev from the device named csr1000v
 
-dev.connect()
+dev.connect()      # Connect to the object dev we defined earlier -  this must be done before parsing to the device
 
 
-p1 = dev.parse('show ip route')
+p1 = dev.parse('show ip route')        # Run the command "show ip route" on the device and parse the output to JSON
 
 ```
+
+As you become more adept
 
 ## Exercise 4 - Implementing the pyATS test framework
 
