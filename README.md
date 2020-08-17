@@ -248,6 +248,15 @@ Now we have an understanding of what pyATS actually does, it's time to build on 
 
 To be fully proficent in using the pyATS framework you will need to be good with Python. However, don't worry if you're not fully comfortable with Python as this guide will attempt to take it nice and slow and build it up. Although hopefully this guide will motivate you to become more proficent with Python.
 
+The first thing we need to do is import the required modules for our tests, this can be done with the below:
+
+```python
+from pyats.async_ import pcall
+from genie.conf import Genie
+from genie.utils import Dq
+from genie.testbed import load
+```
+
 For this session we will be using text files to read and parse device output from. However connecting to a device in order to run commands is simple. You would use the following:
 
 ```python
