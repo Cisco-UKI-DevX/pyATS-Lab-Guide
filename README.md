@@ -251,7 +251,6 @@ To be fully proficent in using the pyATS framework you will need to be good with
 The first thing we need to do is import the required modules for our tests, this can be done with the below:
 
 ```python
-from pyats.async_ import pcall
 from genie.conf import Genie
 from genie.utils import Dq
 from genie.testbed import load
@@ -265,7 +264,6 @@ tb = load('./testbed/testbed-sandbox.yaml')       # Load our testbed file from a
 dev = tb.devices['csr1000v']       # Define an object called dev from the device named csr1000v
 
 dev.connect()      # Connect to the object dev we defined earlier -  this must be done before parsing to the device
-
 
 routingTable = dev.parse('show ip route')        # Run the command "show ip route" on the device and parse the output to JSON
 
