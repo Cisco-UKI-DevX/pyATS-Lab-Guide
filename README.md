@@ -114,7 +114,7 @@ Please note you are free to use this with your own hardware or test environment.
 
 ![](https://github.com/sttrayno/Ansible-Lab-Guide/blob/master/images/sandbox-screen.png)
 
-## Exercise 1 - Simple device test and validation with GenieCLI
+## Exercise 1 - Simple device test and validation with pyATS CLI
 
 As touched upon earlier, the simplest way to get started with the pyATS tools is by using the Genie CLI command line tools.
 
@@ -131,7 +131,7 @@ Now we have our testbed file all thats left to do is run our test. When you you 
 To take a baseline of our test environment use the below command which specifies we're looking to learn all features from the device, the testbed-file we need to use and where the test report file will be saved.
 
 ```bash
-genie learn all --testbed-file testbed-sandbox.yaml --output baseline/test-sandbox
+pyats learn all --testbed-file testbed-sandbox.yaml --output baseline/test-sandbox
 ```
 
 ![](./images/pyats-baseline.gif)
@@ -141,7 +141,7 @@ Lets log onto our router and make some changes, in this instance we have configu
 ![](./images/pyats-config.gif)
 
 ```bash
-genie learn all --testbed-file testbed-sandbox.yaml --output latest/test-sandbox
+pyats learn all --testbed-file testbed-sandbox.yaml --output latest/test-sandbox
 ```
 
 ![](./images/pyats-latest.gif)
@@ -149,7 +149,7 @@ genie learn all --testbed-file testbed-sandbox.yaml --output latest/test-sandbox
 Now we have captured both reports
 
 ```bash
-genie diff baseline/test-sandbox test-sandbox --output diff_dir
+pyats diff baseline/test-sandbox test-sandbox --output diff_dir
 ```
 
 ![](./images/pyats-diff.gif)
@@ -244,10 +244,28 @@ Congratulations, you should now have a grasp of the very basics of the Robot fra
 
 ## Exercise 3 - Building custom tests with the pyATS python libraries
 
-Now we have an understanding of what pyATS actually does, it's time to build on this with the pyATS libraries. As you should of now seen, one of the strengths of pyATS is the extremely powerful parsers and models which allow us to collect raw data from the CLI into abstracted JSON data models which then allow us to do comparisons and test for specific criteria.
+Now we have an understanding of what pyATS actually does, it's time to build on this with the pyATS libraries. As you should of now seen, one of the strengths of pyATS is the extremely powerful parsers and models which allow us to collect raw data from the CLI into abstracted JSON data models which then allow us to do comparisons and test for specific criteria. When using the pyATS CLI we're limited in what we can do to just a few commands and basic comparisons. However as the pyATS libraries are built on top of python we can actually use them to build more complex rest cases. In this section we'll explore some of the capabilities of the pyATS framework and how we can start to built our own custom tests for devices.
 
-For this section
+For this session we will be using text files to read and parse device output from. However connecting to a device in order to run commands is simple. You would use the following:
+
+```python
+
+tb = load('./testbed/testbed-sandbox.yaml')
+dev = tb.devices['csr1000v']
+
+dev.connect()
+
+
+p1 = dev.parse('show ip route')
+
+```
 
 ## Exercise 4 - Implementing the pyATS test framework
 
+Now we have an understanding of how we can profile and work with devices, it's time to look at how we can work the the actual test framework to tell us the user if a test has passed or failed.
+
+
+
 ## Exercise 5 - Using the Xpresso GUI
+
+One of the questions that often comes up for people using pyATS is "is there a GUI or management system I can use for this?" If that question has crossed your mind going through this guide, you're in luck! In July 2020, the pyATS team released the beta of xPresso. It's quite simple to get started
