@@ -278,8 +278,61 @@ routingTable = dev.parse('show ip route')        # Run the command "show ip rout
 As you become more adept with Python you'll begin to understand how you can start to structure your test cases to become more efficent, for example to loop round every device in the testbed or to test specific devices based on their attributes. But for now we'll focus on building our tests on just one device and keep things simple. For now lets just try to get familiar with some of the most common methods you're going to use, however this is not an exhaustive list.
 
 ```JSON
-JSON EXAMPLE
-```
+{
+   "vrf":{
+      "default":{
+         "address_family":{
+            "ipv4":{
+               "routes":{
+                  "0.0.0.0/0":{
+                     "route":"0.0.0.0/0",
+                     "active":true,
+                     "metric":0,
+                     "route_preference":1,
+                     "source_protocol_codes":"S*",
+                     "source_protocol":"static",
+                     "next_hop":{
+                        "next_hop_list":{
+                           "1":{
+                              "index":1,
+                              "next_hop":"10.10.20.254",
+                              "outgoing_interface":"GigabitEthernet1"
+                           }
+                        }
+                     }
+                  },
+                  "10.10.20.0/24":{
+                     "route":"10.10.20.0/24",
+                     "active":true,
+                     "source_protocol_codes":"C",
+                     "source_protocol":"connected",
+                     "next_hop":{
+                        "outgoing_interface":{
+                           "GigabitEthernet1":{
+                              "outgoing_interface":"GigabitEthernet1"
+                           }
+                        }
+                     }
+                  },
+                  "10.10.20.48/32":{
+                     "route":"10.10.20.48/32",
+                     "active":true,
+                     "source_protocol_codes":"L",
+                     "source_protocol":"local",
+                     "next_hop":{
+                        "outgoing_interface":{
+                           "GigabitEthernet1":{
+                              "outgoing_interface":"GigabitEthernet1"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}```
 
 Now we've managed to collect our information from the device, our data from the routing table of our test device should be in the JSON format as can be seen above.
 
