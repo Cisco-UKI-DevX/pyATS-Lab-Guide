@@ -336,7 +336,21 @@ As you become more adept with Python you'll begin to understand how you can star
 
 Now we've managed to collect our information from the device, our data from the routing table of our test device should be in the JSON format as can be seen above. As you can hopefully see we have 3 routes in the routing table for the sandbox device
 
-Now we've got the data, it's a matter of building our logic to test for the exact conditions in our data structures. At this point the better you are at writing Python the better you're going to be here at writing efficent tests. The flexibility of the pyATS framework, for example before a change is about to be made you could take a baseline of specific criteria such as: Number of routes in the routing table, number of BGP neigbours, number of OSPF adjacencies, the number of entries in an ARP table or pretty much any other criteria you want to test against. Below is an example workflow for pre/post change validation that I've devised:
+Now we've got the data, it's a matter of building our logic to test for the exact conditions in our data structures. At this point the better you are at writing Python the better you're going to be here at writing efficent tests. Take this simple example which checks if our routing table has 3 routes, if it does then it prints a message telling the user that the test was a pass, if it does not then it informs the user of a fail. 
+
+```python
+routes = len(routingTable['vrf']['default']['address_family']['ipv4']['routes'])
+
+if routes == 3:
+   print("Pass: The expected number of routes are in the oruting table")
+elif routes < 3:
+   print("Fail: There are less routes in the routing table than expected")
+elif routes > 3:
+   print("Fail: There are more routes in the routing table than expected")
+
+```
+
+The flexibility of the pyATS framework, for example before a change is about to be made you could take a baseline of specific criteria such as: Number of routes in the routing table, number of BGP neigbours, number of OSPF adjacencies, the number of entries in an ARP table or pretty much any other criteria you want to test against. Below is an example workflow for pre/post change validation that I've devised:
 
 Capture state on regular basis and store to github > Make change with tool such as Ansible/Terraform > Post change validation, check that current state passes criteria (BGP neighbours)
 
@@ -349,10 +363,7 @@ As you become more adept at using pyATS you'll discover more and more methods an
 ### .dq()
 
 ### .disconnect()
-
-
-
-
+ 
 ## Exercise 4 - Building custom tests and implementing the pyATS test framework
 
 Now we have an understanding of how we can profile and work with devices, it's time to look at how we can work the the actual test framework to tell us the user if a test has passed or failed.
