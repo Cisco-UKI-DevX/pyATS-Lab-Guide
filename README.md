@@ -358,17 +358,57 @@ As you become more adept at using pyATS you'll discover more and more methods an
 
 ### .execute()
 
+Executes a command on the device and returns the raw input from the device, for example:
+
+```python
+output = dev.execute('show run')
+```
 ### .parse()
+
+Executes a command on the device and returns the json formatted datastructure input for, for example:
+
+```python
+dev.execute('show run')
+```
+
+Can also pass in file of raw text with the following:
+
+```python
+open(pre_filename, newline='') as f:
+output = f.read()
+output = dev.parse(command, output=output)
+```
+
+### .learn()
+
+Learns an entire feature on a device, pyATS has the concept of feature models which are a collection of show commands which are represented in a single data structure. In pyATS there around 30 feature models which will allow you to learn everything you need to know for a specific feature on a device. More efficent than using multiple show commands.
+
+```python
+output = dev.learn('ospf')
+```
 
 ### .dq()
 
-### .disconnect()
- 
+DQ stands for dictionary query and allows you to run specific queries with a very simple syntax. For more information on this refer to the documentation [here](https://pubhub.devnetcloud.com/media/genie-docs/docs/userguide/utils/index.html)
+
+### .diff()
+
+Used often to show the difference between two outputs
+
+```python
+from genie.utils.diff import Diff
+diff = Diff(po1, po2)
+diff.findDiff()
+print(diff)
+```
+
+### .connect / .disconnect()
+
+These methods allow you to connect and disconnect from the device
+
 ## Exercise 4 - Building custom tests and implementing the pyATS test framework
 
 Now we have an understanding of how we can profile and work with devices, it's time to look at how we can work the the actual test framework to tell us the user if a test has passed or failed.
-
-
 
 ## Exercise 5 - Using the Xpresso GUI
 
