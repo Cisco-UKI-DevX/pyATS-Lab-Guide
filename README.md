@@ -285,6 +285,8 @@ Now we've managed to collect our information from the device, our data from the 
 
 Now we've got the data, it's a matter of building our logic to test for the exact conditions in our data structures. At this point the better you are at writing Python the better you're going to be here at writing efficent tests. The flexibility of the pyATS framework, for example before a change is about to be made you could take a baseline of specific criteria such as: Number of routes in the routing table, number of BGP neigbours, number of OSPF adjacencies, the number of entries in an ARP table or pretty much any other criteria you want to test against. Below is an example workflow for pre/post change validation that I've devised:
 
+Capture state on regular basis and store to github > Make change with tool such as Ansible/Terraform > Post change validation, check that current state passes criteria (BGP neighbours)
+
 
 ## Exercise 4 - Building custom tests and implementing the pyATS test framework
 
