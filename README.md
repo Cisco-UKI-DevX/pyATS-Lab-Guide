@@ -242,7 +242,7 @@ If you have not made any config changes on the device this test would run succes
 
 Congratulations, you should now have a grasp of the very basics of the Robot framework.
 
-## Exercise 3 - Building custom tests with the pyATS python libraries
+## Exercise 3 - Exploring the pyATS python libraries
 
 Now we have an understanding of what pyATS actually does, it's time to build on this with the pyATS libraries. As you should of now seen, one of the strengths of pyATS is the extremely powerful parsers and models which allow us to collect raw data from the CLI into abstracted JSON data models which then allow us to do comparisons and test for specific criteria. When using the pyATS CLI we're limited in what we can do to just a few commands and basic comparisons. However as the pyATS libraries are built on top of python we can actually use them to build more complex rest cases. In this section we'll explore some of the capabilities of the pyATS framework and how we can start to built our own custom tests for devices.
 
@@ -281,11 +281,12 @@ As you become more adept with Python you'll begin to understand how you can star
 JSON EXAMPLE
 ```
 
-Now we've managed to collect our information from the device
+Now we've managed to collect our information from the device, our data from the routing table of our test device should be in the JSON format as can be seen above.
+
+Now we've got the data, it's a matter of building our logic to test for the exact conditions in our data structures. At this point the better you are at writing Python the better you're going to be here at writing efficent tests. The flexibility of the pyATS framework, for example before a change is about to be made you could take a baseline of specific criteria such as: Number of routes in the routing table, number of BGP neigbours, number of OSPF adjacencies, the number of entries in an ARP table or pretty much any other criteria you want to test against. Below is an example workflow for pre/post change validation that I've devised:
 
 
-
-## Exercise 4 - Implementing the pyATS test framework
+## Exercise 4 - Building custom tests and implementing the pyATS test framework
 
 Now we have an understanding of how we can profile and work with devices, it's time to look at how we can work the the actual test framework to tell us the user if a test has passed or failed.
 
