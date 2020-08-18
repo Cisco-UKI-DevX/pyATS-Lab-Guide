@@ -248,6 +248,12 @@ Now we have an understanding of what pyATS actually does, it's time to build on 
 
 To be fully proficent in using the pyATS framework you will need to be good with Python. However, don't worry if you're not fully comfortable with Python as this guide will attempt to take it nice and slow and build it up. Although hopefully this guide will motivate you to become more proficent with Python.
 
+To follow along it's probably a good idea to open an interactive python shell by using the command `python3` 
+
+```bash
+python3
+```
+
 The first thing we need to do is import the required modules for our tests, this can be done with the below:
 
 ```python
@@ -275,7 +281,7 @@ As you become more adept with Python you'll begin to understand how you can star
 JSON EXAMPLE
 ```
 
-Now we've managed to collect our information
+Now we've managed to collect our information from the device
 
 
 
