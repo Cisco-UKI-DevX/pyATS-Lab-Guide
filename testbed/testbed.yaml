@@ -9,7 +9,7 @@ testbed:
     line: C1sco12345
 
 devices:
-  csr1000v:
+  csr1000v-1:
     alias: CSRv
     os: iosxe
     type: csr1000v
@@ -17,9 +17,8 @@ devices:
       defaults:
         class: unicon.Unicon
       console:
-        ip: "ios-xe-mgmt.cisco.com"
+        ip: "10.10.20.48"
         protocol: ssh
-        port: "8181"
     custom:
       abstraction:
         order: [os, type]
