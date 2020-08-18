@@ -340,7 +340,7 @@ Now we've got the data, it's a matter of building our logic to test for the exac
 
 Capture state on regular basis and store to github > Make change with tool such as Ansible/Terraform > Post change validation, check that current state passes criteria (BGP neighbours)
 
-As you become more adept at using pyATS you'll discover more and more methods and ways to work with devices and datastructures which will help you in your tests, as always begin to become familiar with the ![documentation](https://pubhub.devnetcloud.com/media/pyats/docs/overview/index.html). However here are a few of the most common:
+As you become more adept at using pyATS you'll discover more and more methods and ways to work with devices and datastructures which will help you in your tests, as always begin to become familiar with the [documentation](https://pubhub.devnetcloud.com/media/pyats/docs/overview/index.html). However here are a few of the most common:
 
 ### .execute()
 
