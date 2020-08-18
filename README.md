@@ -402,7 +402,7 @@ diff.findDiff()
 print(diff)
 ```
 
-### .connect / .disconnect()
+### .connect() / .disconnect()
 
 These methods allow you to connect and disconnect from the device
 
