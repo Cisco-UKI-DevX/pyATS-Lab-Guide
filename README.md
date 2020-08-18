@@ -265,7 +265,7 @@ For this session we will be using text files to read and parse device output fro
 ```python
 
 tb = load('./testbed/testbed-sandbox.yaml')       # Load our testbed file from a file.
-dev = tb.devices['csr1000v']       # Define an object called dev from the device named csr1000v
+dev = tb.devices['csr1000v-1']       # Define an object called dev from the device named csr1000v
 
 dev.connect()      # Connect to the object dev we defined earlier -  this must be done before parsing to the device
 
@@ -353,6 +353,35 @@ elif routes > 3:
 The flexibility of the pyATS framework is really what makes this powerful and will allow you to embed this into your own workflows, for example before a change is about to be made you could take a baseline of specific criteria such as: Number of routes in the routing table, number of BGP neigbours, number of OSPF adjacencies, the number of entries in an ARP table or pretty much any other criteria you want to test against. Below is an example workflow for pre/post change validation that I've devised below. Our test here is a little basic but with not much work you should be able to create some really dynamic tests for your evironment. Also as we're using Python you need not be constricted to working with just Cisco devices. If you can collect the data over an API and work with it in the same manner as we have above you can include that within your testcases, making them even more powerful.
 
 ![](./images/test-workflow.png)
+
+Putting together all of the components above we now have a reusable test for the device csr1000v-1 to check if the device has 3 routes and returns a pass or fail. As can be seen below, experiment with this test a few times and try for different results by adding in some config to the sandbox device. 
+
+Note: I wouldnt recommend moving routes from the device, you might loose connectivity, try adding some static routes instead to the device and run the test a few times.
+
+```python
+
+from genie.conf import Genie
+from genie.utils import Dq
+from genie.testbed import load
+import json
+
+tb = load('./testbed/testbed-sandbox.yaml')       # Load our testbed file from a file.
+dev = tb.devices['csr1000v-1']       # Define an object called dev from the device named csr1000v
+
+dev.connect()      # Connect to the object dev we defined earlier -  this must be done before parsing to the device
+
+routingTable = dev.parse('show ip route')        # Run the command "show ip route" on the device and parse the output to JSON
+
+routes = len(routingTable['vrf']['default']['address_family']['ipv4']['routes']) # Work out how many routes are in the routing table by working out the length of the routes list from the datastructure returned by pyATS
+
+if routes == 3:
+   print("Pass: The expected number of routes are in the oruting table")
+elif routes < 3:
+   print("Fail: There are less routes in the routing table than expected")
+elif routes > 3:
+   print("Fail: There are more routes in the routing table than expected")
+
+```
 
 As you become more adept at using pyATS you'll discover more and more methods and ways to work with devices and datastructures which will help you in your tests, as always begin to become familiar with the [documentation](https://pubhub.devnetcloud.com/media/pyats/docs/overview/index.html). However here are a few of the most common:
 
