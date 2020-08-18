@@ -340,6 +340,18 @@ Now we've got the data, it's a matter of building our logic to test for the exac
 
 Capture state on regular basis and store to github > Make change with tool such as Ansible/Terraform > Post change validation, check that current state passes criteria (BGP neighbours)
 
+As you become more adept at using pyATS you'll discover more and more methods and ways to work with devices and datastructures which will help you in your tests, as always begin to become familiar with the ![documentation](https://pubhub.devnetcloud.com/media/pyats/docs/overview/index.html). However here are a few of the most common:
+
+### .execute()
+
+### .parse()
+
+### .dq()
+
+### .disconnect()
+
+
+
 
 ## Exercise 4 - Building custom tests and implementing the pyATS test framework
 
@@ -350,3 +362,9 @@ Now we have an understanding of how we can profile and work with devices, it's t
 ## Exercise 5 - Using the Xpresso GUI
 
 One of the questions that often comes up for people using pyATS is "is there a GUI or management system I can use for this?" If that question has crossed your mind going through this guide, you're in luck! In July 2020, the pyATS team released the beta of xPresso. It's quite simple to get started
+
+## References and Links
+
+https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/models - Available Models
+
+https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers - Available Parsers
