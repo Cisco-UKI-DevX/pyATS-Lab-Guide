@@ -1,6 +1,3 @@
-> This guide is based from the NetDevOps Live S2 episode 6 pyATS/Genie demos by Simon Hart, credit to Simon for his fantastic content
-> https://www.youtube.com/watch?v=LbxfHWrujHc
-
 *This lab is part of a series of guides from the [Network Automation and Tooling workshop series](https://github.com/sttrayno/Network-Automation-Tooling)*
 
 # Network test and validation with pyATS 
@@ -260,6 +257,7 @@ The first thing we need to do is import the required modules for our tests, this
 from genie.conf import Genie
 from genie.utils import Dq
 from genie.testbed import load
+import json
 ```
 
 For this session we will be using text files to read and parse device output from. However connecting to a device in order to run commands is simple. You would use the following:
@@ -273,11 +271,12 @@ dev.connect()      # Connect to the object dev we defined earlier -  this must b
 
 routingTable = dev.parse('show ip route')        # Run the command "show ip route" on the device and parse the output to JSON
 
+print(json.dumps(routingTable)
 ```
 
 As you become more adept with Python you'll begin to understand how you can start to structure your test cases to become more efficent, for example to loop round every device in the testbed or to test specific devices based on their attributes. But for now we'll focus on building our tests on just one device and keep things simple. For now lets just try to get familiar with some of the most common methods you're going to use, however this is not an exhaustive list.
 
-```JSON
+```json
 {
    "vrf":{
       "default":{
@@ -335,7 +334,7 @@ As you become more adept with Python you'll begin to understand how you can star
 }
 ```
 
-Now we've managed to collect our information from the device, our data from the routing table of our test device should be in the JSON format as can be seen above.
+Now we've managed to collect our information from the device, our data from the routing table of our test device should be in the JSON format as can be seen above. As you can hopefully see we have 3 routes in the routing table for the sandbox device
 
 Now we've got the data, it's a matter of building our logic to test for the exact conditions in our data structures. At this point the better you are at writing Python the better you're going to be here at writing efficent tests. The flexibility of the pyATS framework, for example before a change is about to be made you could take a baseline of specific criteria such as: Number of routes in the routing table, number of BGP neigbours, number of OSPF adjacencies, the number of entries in an ARP table or pretty much any other criteria you want to test against. Below is an example workflow for pre/post change validation that I've devised:
 
