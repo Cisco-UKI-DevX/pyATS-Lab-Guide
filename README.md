@@ -350,7 +350,7 @@ elif routes > 3:
 
 ```
 
-The flexibility of the pyATS framework, for example before a change is about to be made you could take a baseline of specific criteria such as: Number of routes in the routing table, number of BGP neigbours, number of OSPF adjacencies, the number of entries in an ARP table or pretty much any other criteria you want to test against. Below is an example workflow for pre/post change validation that I've devised:
+The flexibility of the pyATS framework is really what makes this powerful and will allow you to embed this into your own workflows, for example before a change is about to be made you could take a baseline of specific criteria such as: Number of routes in the routing table, number of BGP neigbours, number of OSPF adjacencies, the number of entries in an ARP table or pretty much any other criteria you want to test against. Below is an example workflow for pre/post change validation that I've devised below. Our test here is a little basic but with not much work you should be able to create some really dynamic tests for your evironment. Also as we're using Python you need not be constricted to working with just Cisco devices. If you can collect the data over an API and work with it in the same manner as we have above you can include that within your testcases, making them even more powerful.
 
 Capture state on regular basis and store to github > Make change with tool such as Ansible/Terraform > Post change validation, check that current state passes criteria (BGP neighbours)
 
