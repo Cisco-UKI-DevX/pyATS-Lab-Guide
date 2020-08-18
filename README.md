@@ -332,7 +332,8 @@ As you become more adept with Python you'll begin to understand how you can star
          }
       }
    }
-}```
+}
+```
 
 Now we've managed to collect our information from the device, our data from the routing table of our test device should be in the JSON format as can be seen above.
 
