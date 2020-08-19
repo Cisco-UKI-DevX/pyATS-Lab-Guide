@@ -128,7 +128,7 @@ Now we have our testbed file all thats left to do is run our test. When you you 
 To take a baseline of our test environment use the below command which specifies we're looking to learn all features from the device, the testbed-file we need to use and where the test report file will be saved.
 
 ```bash
-pyats learn all --testbed-file testbed-sandbox.yaml --output baseline/test-sandbox
+pyats learn all --testbed-file testbed/testbed.yaml --output baseline/test-sandbox
 ```
 
 ![](./images/pyats-baseline.gif)
@@ -138,7 +138,7 @@ Lets log onto our router and make some changes, in this instance we have configu
 ![](./images/pyats-config.gif)
 
 ```bash
-pyats learn all --testbed-file testbed-sandbox.yaml --output latest/test-sandbox
+pyats learn all --testbed-file testbed/testbed.yaml --output latest/test-sandbox
 ```
 
 ![](./images/pyats-latest.gif)
