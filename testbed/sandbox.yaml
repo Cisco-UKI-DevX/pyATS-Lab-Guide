@@ -1,0 +1,41 @@
+testbed:
+  name: Sandbox-Multi-Platform-Network-Subset
+  credentials:
+      default:
+        username: cisco
+        password: cisco
+
+devices:
+  internet-rtr01:
+    os: iosxe
+    type: csr1000v
+    credentials:
+      default:
+        username: cisco
+        password: cisco
+    connections:
+      cli:
+        protocol: ssh
+        ip: 10.10.20.181
+  dist-rtr01:
+    os: iosxe
+    type: csr1000v
+    credentials:
+      default:
+        username: cisco
+        password: cisco
+    connections:
+      cli:
+        protocol: ssh
+        ip: 10.10.20.175
+  dist-rtr02:
+    os: iosxe
+    type: csr1000v
+    credentials:
+      default:
+        username: cisco
+        password: cisco
+    connections:
+      cli:
+        protocol: ssh
+        ip: 10.10.20.176   
