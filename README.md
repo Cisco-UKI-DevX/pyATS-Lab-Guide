@@ -467,13 +467,11 @@ dev.connect()
 
 These are just a small collection of some of the available device libraries, you can find all documentation [here](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/quickstart/structureofastatement.html). I would encourage you to experiment a bit with these though and work out some of the tasks you can do with a device.
 
-## Exercise 4 - Building custom tests and implementing the pyATS test framework
+## Exercise 4 - Building custom tests and implementing the pyATS test framework (In progress)
 
 Now we have an understanding of how we can profile and work with devices, it's time to look at how we can work the the actual test framework to tell us the user if a test has passed or failed. You might think we've already done that in the previous exercise, however theres a bit more to it than just printing out a pass or fail to the console. Imagine a situation where you're running hundreds of complex tests, you want a quick way to flag to the user which tests have passed or failed. That is where the aetest framework comes in handy.
 
 ## Exercise 5 - Using the Xpresso GUI
-
-One of the questions that often comes up for people using pyATS is "is there a GUI or management system I can use for this?" If that question has crossed your mind going through this guide, you're in luck! In July 2020, the pyATS team released the beta of xPresso. It's quite simple to get started
 
 ## References and Links
 
