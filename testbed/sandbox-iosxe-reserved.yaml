@@ -1,24 +1,15 @@
 testbed:
-  name: pyats
-
-  tacacs:
-    username: developer
-  passwords:
-    tacacs: C1sco12345
-    enable: C1sco12345
-    line: C1sco12345
+name: Sandbox-Multi-Platform-Network
 
 devices:
-  csr1000v-1:
-    alias: CSRv
+  internet-rtr01:
     os: iosxe
     type: csr1000v
-    connections:
-      defaults:
-        class: unicon.Unicon
-      console:
-        ip: "10.10.20.48"
-        protocol: ssh
-    custom:
-      abstraction:
-        order: [os, type]
+  credentials:
+    default:
+       username: cisco
+       password: cisco
+  connections:
+     cli:
+       protocol: ssh
+       ip: 10.10.20.181
