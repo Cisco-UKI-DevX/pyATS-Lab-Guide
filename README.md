@@ -2,7 +2,7 @@
 
 # Network test and validation with pyATS 
 
-Network testing and validation tools is a massively growing area within network and infrastructure engineering. When you look at the rise in network automation and the move towards NetDevOps and CICD pipelines for the network the need for tools that can carry out test and validation of the network is extremely important. pyATS looks to answer questions such as:
+Network testing and validation tools is a massively growing area within network and infrastructure engineering. When you look at the growing interest innetwork automation and the move towards NetDevOps and CICD pipelines for the network, the need for tools that can carry out test and validation of the network is extremely important. pyATS looks to answer questions such as:
 
 - What has changed on the network config?
 - Is my data plane operating the way that I would expect?
@@ -16,19 +16,17 @@ Originally developed for internal Cisco engineering use, pyATS/Genie is at the c
  
 ![](https://pubhub.devnetcloud.com/media/pyats-genie-docs/docs/imgs/layers.png#developer.cisco.com)
 
-Before we get hands on there are a couple of core concepts that we need to explain as you might have noticed we've been using pyATS and Genie almost interchangeably, we need to explain these tools clearly.
+Before we get hands on there are a couple of core concepts that we need to explain as you might have noticed we've been using pyATS and Genie almost interchangeably, we need to explain pyATS and the different components a bit more.
 
 ### pyATS
 
 pyATS is the test framework foundation for this ecosystem. It specializes in data-driven and reusable testing, and is engineered for Agile, rapid development iterations.
 
-This powerful, highly-pluggable Python framework is designed to enable developers start with small, simple and linear test cases, then scale towards large, complex and asynchronous test suites.
+This powerful, highly-pluggable Python framework is designed to enable developers start with small, simple and linear test cases, then scale towards large, complex and asynchronous test suites. The best way to think about pyATS is that it is the part which allows us to write our tests and we use that to build the logic in Python whetehr it has passed or failed.
 
 ### Genie
 
-The simplest way to use pyATS
-
-Genie redefines how network engineers perform testing and scripting. It comes out of the box with all the bits needed for Network Test Automation, meaning that network engineers and NetDevOps can be productive day one with Genie's readily available, holistic and model-driven libraries.
+Genie and it's compoents how network engineers perform testing and scripting. It comes out of the box with all the bits needed for Network Test Automation, meaning that network engineers and NetDevOps can be productive day one with Genie's readily available and model-driven libraries. Genie has components such as parsers and other methods which allow us to work with networking devices and build our tests around it.
 
 Genie builds on pyATS to provide:
 
@@ -59,11 +57,12 @@ As you go deeper and deeper into pyATS and Genie you'll start to realise how man
 
 First thing to do is to make sure your system has a supported version of Python for pyATS, you can find out your installed version by running the `python --version`
 
-Current versions of Python with support for pyATS on Linux & MacOS systems. Windows platforms are currently not supported:
+Current versions of Python with support for pyATS on Linux & MacOS systems. Windows platforms are currently not supported, however is supported on Windows 10 with WSL:
 
 - Python 3.5.x
 - Python 3.6.x
 - Python 3.7.x
+- Python 3.8.x
 
 Installing the pyATS library couldn't be simpler, all you need to do is run the command `pip install pyats[full]` which should carry out the needed installation process.
 
@@ -107,13 +106,13 @@ Most popular sandboxes include:
 - Cisco SD-WAN environment - Always-On
 - Cisco DNA-C environment - Always-On
 
-Please note you are free to use this with your own hardware or test environment. However the commands in this lab guide have been tested for the sandboxes they correspond to. For this lab guide we will be using the reservable IOS XE on CSR Recommended Code Sandbox which can be found on the Sandbox catalogue https://devnetsandbox.cisco.com/RM/Topology
+Please note you are free to use this with your own hardware or test environment. However the commands in this lab guide have been tested for the sandboxes they correspond to. For this lab guide we will be using the reservable pyATS XPRESSO Sandbox which can be found on the Sandbox catalogue. You may wish to use your own devices but you will have to modify the code and sample topologies to make them suitable. https://devnetsandbox.cisco.com/RM/Topology
 
 ![](https://github.com/sttrayno/Ansible-Lab-Guide/blob/master/images/sandbox-screen.png)
 
 ## Exercise 1 - Simple device test and validation with pyATS CLI
 
-As touched upon earlier, the simplest way to get started with the pyATS tools is by using the Genie CLI command line tools.
+As touched upon earlier, the simplest way to get started with the pyATS tools is by using the PyATS CLI command line tools. This is a simple pyATS commond line tool which allows you to use some of the pyATS functionality without needing to build a pyATS test. In this example we will do a comparison of a device by capturing the state, making some changes, capturing the state again then comparing both versions.
 
 ### Step 1 - Building your testbed file
 
