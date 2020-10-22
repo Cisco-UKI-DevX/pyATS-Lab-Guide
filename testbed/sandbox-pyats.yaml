@@ -1,41 +1,109 @@
 testbed:
-  name: Sandbox-Multi-Platform-Network-Subset
+  name: Sandbox-Multi-Platform-Network
   credentials:
       default:
         username: cisco
         password: cisco
 
 devices:
+  terminal_server:
+    os: linux
+    type: linux
+    credentials:
+      default:
+        username: developer
+        password: C1sco12345
+    connections:
+      cli:
+        protocol: ssh
+        ip: 10.10.20.161
+        
   internet-rtr01:
     os: iosxe
-    type: csr1000v
-    credentials:
-      default:
-        username: cisco
-        password: cisco
+    type: router
+    series: csr1000v
     connections:
       cli:
-        protocol: ssh
-        ip: 10.10.20.181
+        protocol: telnet
+        proxy: terminal_server
+        command: open /e65a3c/n0/0
+
+  edge-firewall01:
+    os: asa
+    type: firewall
+    connections:
+      cli:
+        protocol: telnet
+        proxy: terminal_server
+        command: open /e65a3c/n2/0
+        
+  core-rtr01:
+    os: iosxr
+    type: router
+    series: iosxrv
+    connections:
+      cli:
+        protocol: telnet
+        proxy: terminal_server
+        command: open /e65a3c/n3/0
+        
+  core-rtr02:
+    os: iosxr
+    type: router
+    series: iosxrv
+    connections:
+      cli:
+        protocol: telnet
+        proxy: terminal_server
+        command: open /e65a3c/n4/0
+        
   dist-rtr01:
     os: iosxe
-    type: csr1000v
-    credentials:
-      default:
-        username: cisco
-        password: cisco
+    type: router
+    series: csr1000v
     connections:
       cli:
-        protocol: ssh
-        ip: 10.10.20.175
+        protocol: telnet
+        proxy: terminal_server
+        command: open /e65a3c/n5/0
+        
   dist-rtr02:
     os: iosxe
-    type: csr1000v
-    credentials:
-      default:
-        username: cisco
-        password: cisco
+    type: router
+    series: csr1000v
     connections:
       cli:
-        protocol: ssh
-        ip: 10.10.20.176   
+        protocol: telnet
+        proxy: terminal_server
+        command: open /e65a3c/n6/0
+        
+  dist-sw01:
+    os: nxos
+    type: switch
+    series: n9k
+    connections:
+      cli:
+        protocol: telnet
+        proxy: terminal_server
+        command: open /e65a3c/n7/0
+        
+  dist-sw02:
+    os: nxos
+    type: switch
+    series: n9k
+    connections:
+      cli:
+        protocol: telnet
+        proxy: terminal_server
+        command: open /e65a3c/n8/0
+      
+  edge-sw01:
+    os: ios
+    type: switch
+    series: iosv
+    connections:
+      cli:
+        protocol: telnet
+        proxy: terminal_server
+        command: open /e65a3c/n11/0
+        
