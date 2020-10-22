@@ -2,7 +2,7 @@
 
 # Network test and validation with pyATS 
 
-Network testing and validation tools is a massively growing area within network and infrastructure engineering. When you look at the growing interest innetwork automation and the move towards NetDevOps and CICD pipelines for the network, the need for tools that can carry out test and validation of the network is extremely important. pyATS looks to answer questions such as:
+Network testing and validation tools is a massively growing area within network and infrastructure engineering. When you look at the growing interest in network automation and the move towards NetDevOps and CICD pipelines for the network, the need for tools that can carry out test and validation of the network is extremely important. pyATS looks to answer questions such as:
 
 - What has changed on the network config?
 - Is my data plane operating the way that I would expect?
@@ -116,8 +116,9 @@ As touched upon earlier, the simplest way to get started with the pyATS tools is
 
 ### Step 1 - Building your testbed file
 
-The first thing anyone using pyATS needs to do is define a testbed file to outline what the topology is and how pyATS can connect to it. There is an example testbed file included with just one device to connect to the sandbox environment outlined. You can find it within the `testbed` folder. There are also a few extra ones in there so you can get the hang of the YAML format. If you want to run this on another environment feel free to tweak the files included to suit your environment.
+The first thing anyone using pyATS needs to do is define a testbed file to outline what the topology is and how pyATS can connect to it. There is an example testbed file included with just one device to connect to the sandbox environment outlined. You can find it within the `testbed` folder. There are also a few extra ones in there so you can get the hang of the YAML format. If you want to run this on another environment feel free to tweak the files included to suit your environment. You can see an example testbed definition below.
 
+```
 testbed:
   name: Sandbox-Multi-Platform-Network-Subset
   credentials:
@@ -137,6 +138,7 @@ devices:
       cli:
         protocol: ssh
         ip: 10.10.20.181
+```
 
 IMPORTANT: When building your inventory file ensure the alias value and hostname of your device match exactly. Trust me that will save you hours of troubleshooting. :)
 
@@ -147,7 +149,7 @@ Now we have our testbed file all thats left to do is run our test. When you you 
 To take a baseline of our test environment use the below command which specifies we're looking to learn all features from the device, the testbed-file we need to use and where the test report file will be saved.
 
 ```bash
-pyats learn all --testbed-file testbed/testbed.yaml --output baseline/test-sandbox
+pyats learn all --testbed-file testbed/sandbox-device.yaml --output baseline/test-sandbox
 ```
 
 ![](./images/pyats-baseline.gif)
@@ -169,6 +171,8 @@ pyats diff baseline/test-sandbox test-sandbox --output diff_dir
 ```
 
 ![](./images/pyats-diff.gif)
+
+`Quick Troubleshooting tip: If when you run the pyats learn commands the console hangs and returns "Failed while bringing device to "any" state" Check that you can SSH to the device normally, if you can then troubleshoot the testbed file.
 
 ### Step 3 - Examine your output
 
