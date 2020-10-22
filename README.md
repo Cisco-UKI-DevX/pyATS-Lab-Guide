@@ -172,13 +172,13 @@ pyats diff baseline/test-sandbox latest/test-sandbox --output diff_dir
 
 ![](./images/pyats-diff.gif)
 
-`Quick Troubleshooting tip: If when you run the pyats learn commands the console hangs and returns "Failed while bringing device to "any" state" Check that you can SSH to the device normally, if you can then troubleshoot the testbed file.
+`Quick Troubleshooting tip: If when you run the pyats learn commands the console hangs and returns "Failed while bringing device to "any" state" Check that you can SSH to the device normally, if you can then troubleshoot the testbed file.`
 
 ### Step 3 - Examine your output
 
 As we can see from the bash output above, the Genie diff command takes all the outputs from our various tests (approx 30 at the time of writing) and compares the outputs. As would be expected most of these are identical except from the config (which we changed back in step 2) and the OSPF config, which is to be expected... considering we configured OSPF.
 
-The genie tool also creates a file in which we can see what the exact differences are from the files, therefore making it easy for us to understand that OSPF has been configured on the device since our last known baseline.
+The genie tool also creates a file in which we can see what the exact differences are from the files, therefore making it easy for us to understand that OSPF has been configured on the device since our last known baseline. I'd encourage you to explore these in detail to understand the information and models from the device which pyats collects.
 
 ![](./images/pyats-diff-explore.gif)
 
@@ -264,9 +264,9 @@ Congratulations, you should now have a grasp of the very basics of the Robot fra
 
 ## Exercise 3 - Exploring the pyATS python libraries
 
-Now we have an understanding of what pyATS actually does, it's time to build on this with the pyATS libraries. As you should of now seen, one of the strengths of pyATS is the extremely powerful parsers and models which allow us to collect raw data from the CLI into abstracted JSON data models which then allow us to do comparisons and test for specific criteria. When using the pyATS CLI we're limited in what we can do to just a few commands and basic comparisons. However as the pyATS libraries are built on top of python we can actually use them to build more complex rest cases. In this section we'll explore some of the capabilities of the pyATS framework and how we can start to built our own custom tests for devices.
+Now we have an understanding of what pyATS actually does, it's time to build on this with the pyATS libraries. As you should of now seen, one of the strengths of pyATS is the extremely powerful parsers and models which allow us to collect raw data from the CLI into abstracted JSON data models which then allow us to do comparisons and test for specific criteria. When using the pyATS CLI we're limited in what we can do to just a few commands and basic comparisons. However as the pyATS libraries are built on top of python we can actually use them to build more complex test cases. In this section we'll explore some of the capabilities of the pyATS framework and how we can start to built our own custom tests for devices by using some of the Python libraries available to us.
 
-To be fully proficent in using the pyATS framework you will need to be good with Python. However, don't worry if you're not fully comfortable with Python as this guide will attempt to take it nice and slow and build it up. Although hopefully this guide will motivate you to become more proficent with Python.
+To be fully proficent in using the pyATS framework you will need to be good with Python. However, don't worry if you're not fully comfortable with Python as this guide will attempt to take it slow and build it from the ground up. Although hopefully this guide will motivate you to become more proficent with Python.
 
 To follow along it's probably a good idea to open an interactive python shell by using the command `python3` 
 
@@ -287,8 +287,8 @@ For this session we will be using text files to read and parse device output fro
 
 ```python
 
-tb = load('./testbed/testbed-sandbox.yaml')       # Load our testbed file from a file.
-dev = tb.devices['csr1000v-1']       # Define an object called dev from the device named csr1000v
+tb = load('./testbed/testbed-device.yaml')       # Load our testbed file from a file.
+dev = tb.devices['internet-rtr01']       # Define an object called dev from the device named csr1000v
 
 dev.connect()      # Connect to the object dev we defined earlier -  this must be done before parsing to the device
 
@@ -297,7 +297,7 @@ routingTable = dev.parse('show ip route')        # Run the command "show ip rout
 print(json.dumps(routingTable)
 ```
 
-As you become more adept with Python you'll begin to understand how you can start to structure your test cases to become more efficent, for example to loop round every device in the testbed or to test specific devices based on their attributes. But for now we'll focus on building our tests on just one device and keep things simple. For now lets just try to get familiar with some of the most common methods you're going to use, however this is not an exhaustive list.
+As you become more adept with Python you'll begin to understand how you can start to structure your test cases to become more efficent, for example to loop round every device in the testbed or to test specific devices based on their attributes. But for now we'll focus on building our tests on just one device and keep things simple. For now lets just try to get familiar with some of the most common methods you're going to use, however this is not an exhaustive list and you'll learn more about pyats the more you use it.
 
 ```json
 {
@@ -359,13 +359,13 @@ As you become more adept with Python you'll begin to understand how you can star
 
 Now we've managed to collect our information from the device, our data from the routing table of our test device should be in the JSON format as can be seen above. As you can hopefully see we have 3 routes in the routing table for the sandbox device
 
-Now we've got the data, it's a matter of building our logic to test for the exact conditions in our data structures. At this point the better you are at writing Python the better you're going to be here at writing efficent tests. Take this simple example which checks if our routing table has 3 routes, if it does then it prints a message telling the user that the test was a pass, if it does not then it informs the user of a fail. 
+Now we've got the data, it's a matter of building our logic to test for the exact conditions in our data structures. At this point the better you are at writing Python the better you're going to be here at writing efficent tests. Take this simple example which checks how many routes are in the routing table and checks if it has 3 routes, if it does then it prints a message telling the user that the test was a pass, if it does not then it informs the user of a fail. 
 
 ```python
 routes = len(routingTable['vrf']['default']['address_family']['ipv4']['routes'])
 
 if routes == 3:
-   print("Pass: The expected number of routes are in the oruting table")
+   print("Pass: The expected number of routes are in the routing table")
 elif routes < 3:
    print("Fail: There are less routes in the routing table than expected")
 elif routes > 3:
@@ -377,9 +377,9 @@ The flexibility of the pyATS framework is really what makes this powerful and wi
 
 ![](./images/test-workflow.png)
 
-Putting together all of the components above we now have a reusable test for the device csr1000v-1 to check if the device has 3 routes and returns a pass or fail. As can be seen below, experiment with this test a few times and try for different results by adding in some config to the sandbox device. 
+Putting together all of the components above we now have a reusable test for the device internet-rtr01 to check if the device has 3 routes and returns a pass or fail. As can be seen below, experiment with this test a few times and try for different results by adding in some config to the sandbox device. 
 
-Note: I wouldnt recommend moving routes from the device, you might loose connectivity, try adding some static routes instead to the device and run the test a few times.
+Note: I wouldnt recommend removing routes from the device, you might loose connectivity, try adding some static routes instead to the device and run the test a few times.
 
 ```python
 
@@ -388,8 +388,8 @@ from genie.utils import Dq
 from genie.testbed import load
 import json
 
-tb = load('./testbed/testbed-sandbox.yaml')       # Load our testbed file from a file.
-dev = tb.devices['csr1000v-1']       # Define an object called dev from the device named csr1000v
+tb = load('./testbed/testbed-devices.yaml')       # Load our testbed file from a file.
+dev = tb.devices['internet-rtr01']       # Define an object called dev from the device named csr1000v
 
 dev.connect()      # Connect to the object dev we defined earlier -  this must be done before parsing to the device
 
@@ -420,13 +420,13 @@ output = dev.execute('show run')
 Executes a command on the device and returns the json formatted datastructure input for, for example:
 
 ```python
-dev.execute('show run')
+output = dev.parse('show run')
 ```
 
 Can also pass in file of raw text with the following:
 
 ```python
-open(pre_filename, newline='') as f:
+output = open(pre_filename, newline='') as f:
 output = f.read()
 output = dev.parse(command, output=output)
 ```
@@ -458,6 +458,15 @@ print(diff)
 
 These methods allow you to connect and disconnect from the device
 
+```python
+tb = load('./testbed/testbed-devices.yaml')     
+dev = tb.devices['internet-rtr01']       
+
+dev.connect()
+```
+
+These are just a small collection of some of the available device libraries, you can find all documentation [here](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/quickstart/structureofastatement.html). I would encourage you to experiment a bit with these though and work out some of the tasks you can do with a device.
+
 ## Exercise 4 - Building custom tests and implementing the pyATS test framework
 
 Now we have an understanding of how we can profile and work with devices, it's time to look at how we can work the the actual test framework to tell us the user if a test has passed or failed. You might think we've already done that in the previous exercise, however theres a bit more to it than just printing out a pass or fail to the console. Imagine a situation where you're running hundreds of complex tests, you want a quick way to flag to the user which tests have passed or failed. That is where the aetest framework comes in handy.
@@ -471,3 +480,5 @@ One of the questions that often comes up for people using pyATS is "is there a G
 https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/models - Available Models
 
 https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers - Available Parsers
+
+https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/quickstart/structureofastatement.html - Documentation
