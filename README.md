@@ -159,7 +159,7 @@ Lets log onto our router and make some changes, in this instance we have configu
 ![](./images/pyats-config.gif)
 
 ```bash
-pyats learn all --testbed-file testbed/testbed.yaml --output latest/test-sandbox
+pyats learn all --testbed-file testbed/sandbox-device.yaml --output latest/test-sandbox
 ```
 
 ![](./images/pyats-latest.gif)
@@ -167,7 +167,7 @@ pyats learn all --testbed-file testbed/testbed.yaml --output latest/test-sandbox
 Now we have captured both reports
 
 ```bash
-pyats diff baseline/test-sandbox test-sandbox --output diff_dir
+pyats diff baseline/test-sandbox latest/test-sandbox --output diff_dir
 ```
 
 ![](./images/pyats-diff.gif)
