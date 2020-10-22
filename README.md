@@ -118,6 +118,26 @@ As touched upon earlier, the simplest way to get started with the pyATS tools is
 
 The first thing anyone using pyATS needs to do is define a testbed file to outline what the topology is and how pyATS can connect to it. There is an example testbed file included with just one device to connect to the sandbox environment outlined. You can find it within the `testbed` folder. There are also a few extra ones in there so you can get the hang of the YAML format. If you want to run this on another environment feel free to tweak the files included to suit your environment.
 
+testbed:
+  name: Sandbox-Multi-Platform-Network-Subset
+  credentials:
+      default:
+        username: cisco
+        password: cisco
+
+devices:
+  internet-rtr01:
+    os: iosxe
+    type: csr1000v
+    credentials:
+      default:
+        username: cisco
+        password: cisco
+    connections:
+      cli:
+        protocol: ssh
+        ip: 10.10.20.181
+
 IMPORTANT: When building your inventory file ensure the alias value and hostname of your device match exactly. Trust me that will save you hours of troubleshooting. :)
 
 ### Step 2 - Creating a baseline of a device
