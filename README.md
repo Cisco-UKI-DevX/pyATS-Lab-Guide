@@ -475,11 +475,11 @@ To build a test in pyATS we need 3 main components:
 
 #### Testbed  
 
-We've already visited this, the testbed is a yaml file which describes our physical environment and the devices we need to test. If you're not familiar with this please revisit exercise 1 step 1
+We've already visited this, the testbed is a YAML file which describes our physical environment and the devices we need to test. If you're not familiar with this please revisit exercise 1 step 1.
 
 #### Testcases
 
-You can have 1 of more of these Python files. These testscripts define the the three components of any test, the setup, excecution and cleanup of our tests. We'll go into a little deeper in the next sections.
+You can have 1 of more of these Python files. These testscripts define the the three components of any test, the setup, excecution and cleanup of our tests. We'll go into a little deeper in the next sections. For now we're just going to have 1 file and define 2 testcases
 
 #### Job file
 
@@ -495,17 +495,15 @@ Sometimes getting started can be a little overwhelming, something which I find h
 STTRAYNO-M-L0AA:~ sttrayno$ pyats create project
 Project Name: test
 Testcase names [enter to finish]:
-  1. runPing
-  2. runWiderTest
-  3. checkRoutingTable
-  4.
+  1. CheckRoutingTable
+  2.
 Will you be using testcase datafiles [Y/n]: n
 Generating your project...
 ```
 
-### Testcases
+#### Testcases
 
-When you create your templated examples using the examples above you should have two files `example_test_job.py` and `example_test.py` We'll leave the first file aside for now as all this is really doing is calling our example_test.py which includes the testcase names we defined above. As you can see the test script has three main sections. The first being the CommonSetup() which connects to our devices, the second being our three testcases we defined above, then a CommonCleanup section.
+When you create your templated examples using the examples above you should have two files `example_test_job.py` and `example_test.py` We'll leave the first file aside for now as all this is really doing is calling our example_test.py which includes the testcase names we defined above. As you can see the test script has three main sections. The first being the CommonSetup() which connects to our devices, the second being our single testcase we defined above, then a CommonCleanup section. If we defined more testcase names from the `pyats create wizard` in the step before we'd have more testcases.
 
 ```python
 
@@ -523,8 +521,8 @@ class CommonSetup(aetest.CommonSetup):
         testbed.connect()
 
 
-class runPing(aetest.Testcase):
-    '''runPing
+class CheckRoutingTable(aetest.Testcase):
+    '''CheckRoutingTable
 
     < docstring description of this testcase >
 
@@ -548,60 +546,6 @@ class runPing(aetest.Testcase):
     def cleanup(self):
         pass
     
-
-class runWiderTest(aetest.Testcase):
-    '''runWiderTest
-
-    < docstring description of this testcase >
-
-    '''
-
-    # testcase groups (uncomment to use)
-    # groups = []
-
-    @aetest.setup
-    def setup(self):
-        pass
-
-    # you may have N tests within each testcase
-    # as long as each bears a unique method name
-    # this is just an example
-    @aetest.test
-    def test(self):
-        pass
-
-    @aetest.cleanup
-    def cleanup(self):
-        pass
-    
-
-class checkRoutingTable(aetest.Testcase):
-    '''checkRoutingTable
-
-    < docstring description of this testcase >
-
-    '''
-
-    # testcase groups (uncomment to use)
-    # groups = []
-
-    @aetest.setup
-    def setup(self):
-        pass
-
-    # you may have N tests within each testcase
-    # as long as each bears a unique method name
-    # this is just an example
-    @aetest.test
-    def test(self):
-        pass
-
-    @aetest.cleanup
-    def cleanup(self):
-        pass
-    
-
-
 class CommonCleanup(aetest.CommonCleanup):
     '''CommonCleanup Section
 
@@ -614,6 +558,12 @@ class CommonCleanup(aetest.CommonCleanup):
     # def subsection_cleanup_one(self):
     #     pass
 ```
+
+In this example we're going to take our previous test we built in exercise 3 and adapt it to the aetest framework. Which we're testing if the routing table has 3 routes on it
+
+This is a bit of a basic example and not necessarily representative of the real world but the idea here is to understand the logic of building a test. You could however potentially adapt this to test for certain important routes, or a specific desired state. 
+
+As this is just a beginners exercise we don't want to get too indepth just yet.
 
 ## Exercise 5 - Using the Xpresso GUI
 
