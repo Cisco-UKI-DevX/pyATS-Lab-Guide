@@ -297,7 +297,7 @@ routingTable = dev.parse('show ip route')        # Run the command "show ip rout
 print(json.dumps(routingTable)
 ```
 
-As you become more adept with Python you'll begin to understand how you can start to structure your test cases to become more efficent, for example to loop round every device in the testbed or to test specific devices based on their attributes. But for now we'll focus on building our tests on just one device and keep things simple. For now lets just try to get familiar with some of the most common methods you're going to use, however this is not an exhaustive list and you'll learn more about pyats the more you use it.
+As you become more adept with Python you'll begin to understand how you can start to structure your test cases to become more efficent, for example to loop round every device in the testbed or to test specific devices based on their attributes. But for now we'll focus on just using the pyATS/Genie libaries on just one device and keep things simple. For now lets just try to get familiar with some of the most common methods you're going to use, however this is not an exhaustive list and you'll learn more about pyats the more you use it.
 
 ```json
 {
