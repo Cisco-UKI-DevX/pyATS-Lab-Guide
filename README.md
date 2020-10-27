@@ -6,8 +6,8 @@ Network testing and validation tools is a massively growing area within network 
 
 - What has changed on the network config?
 - Is my data plane operating the way that I would expect?
-- Can I compare my control plane and data plane against a known good baseline?
-- Can I automate this process across my entire estate?
+- Can I compare my configuration and operational state against a known good baseline?
+- Can I automate this test process across my entire estate?
 
 Originally developed for internal Cisco engineering use, pyATS/Genie is at the core of Cisco's Test Automation Solution. Some interesting numbers on pyATS current use within Cisco:
 
@@ -20,7 +20,7 @@ Before we get hands on there are a couple of core concepts that we need to expla
 
 ### pyATS
 
-pyATS is the test framework foundation for this ecosystem. It specializes in data-driven and reusable testing, and is engineered for Agile, rapid development iterations.
+pyATS is the core test framework foundation for this ecosystem. It specializes in data-driven and reusable testing, and is engineered for Agile, rapid development iterations.
 
 This powerful, highly-pluggable Python framework is designed to enable developers start with small, simple and linear test cases, then scale towards large, complex and asynchronous test suites. The best way to think about pyATS is that it is the part which allows us to write our tests and we use that to build the logic in Python whetehr it has passed or failed.
 
@@ -467,9 +467,153 @@ dev.connect()
 
 These are just a small collection of some of the available device libraries, you can find all documentation [here](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/quickstart/structureofastatement.html). I would encourage you to experiment a bit with these though and work out some of the tasks you can do with a device.
 
-## Exercise 4 - Building custom tests and implementing the pyATS test framework (In progress)
+## Exercise 4 - Building custom testscases and implementing the pyATS test framework (In progress)
 
 Now we have an understanding of how we can profile and work with devices, it's time to look at how we can work the the actual test framework to tell us the user if a test has passed or failed. You might think we've already done that in the previous exercise, however theres a bit more to it than just printing out a pass or fail to the console. Imagine a situation where you're running hundreds of complex tests, you want a quick way to flag to the user which tests have passed or failed. That is where the aetest framework comes in handy.
+
+To build a test in pyATS we need 3 main components:
+
+#### Testbed  
+
+We've already visited this, the testbed is a yaml file which describes our physical environment and the devices we need to test. If you're not familiar with this please revisit exercise 1 step 1
+
+#### Testcases
+
+You can have 1 of more of these Python files. These testscripts define the the three components of any test, the setup, excecution and cleanup of our tests. We'll go into a little deeper in the next sections.
+
+#### Job file
+
+The job file is a single python file which brings together all our testscripts and defines aspects such as excecution, running order, logging and architects
+
+Separating out the job file from the testcases allows us to build reusable tests that can be can together and modularly selected when needed.
+
+#### Creating a template usecase
+
+Sometimes getting started can be a little overwhelming, something which I find helpful is using a little known command in pyATS to create some templates which will show you how you want to layout your testcase.
+
+```bash
+STTRAYNO-M-L0AA:~ sttrayno$ pyats create project
+Project Name: test
+Testcase names [enter to finish]:
+  1. runPing
+  2. runWiderTest
+  3. checkRoutingTable
+  4.
+Will you be using testcase datafiles [Y/n]: n
+Generating your project...
+```
+
+### Testcases
+
+When you create your templated examples using the examples above you should have two files `example_test_job.py` and `example_test.py` We'll leave the first file aside for now as all this is really doing is calling our example_test.py which includes the testcase names we defined above. As you can see the test script has three main sections. The first being the CommonSetup() which connects to our devices, the second being our three testcases we defined above, then a CommonCleanup section.
+
+```python
+
+class CommonSetup(aetest.CommonSetup):
+
+    @aetest.subsection
+    def connect(self, testbed):
+        '''
+        establishes connection to all your testbed devices.
+        '''
+        # make sure testbed is provided
+        assert testbed, 'Testbed is not provided!'
+
+        # connect to all testbed devices
+        testbed.connect()
+
+
+class runPing(aetest.Testcase):
+    '''runPing
+
+    < docstring description of this testcase >
+
+    '''
+
+    # testcase groups (uncomment to use)
+    # groups = []
+
+    @aetest.setup
+    def setup(self):
+        pass
+
+    # you may have N tests within each testcase
+    # as long as each bears a unique method name
+    # this is just an example
+    @aetest.test
+    def test(self):
+        pass
+
+    @aetest.cleanup
+    def cleanup(self):
+        pass
+    
+
+class runWiderTest(aetest.Testcase):
+    '''runWiderTest
+
+    < docstring description of this testcase >
+
+    '''
+
+    # testcase groups (uncomment to use)
+    # groups = []
+
+    @aetest.setup
+    def setup(self):
+        pass
+
+    # you may have N tests within each testcase
+    # as long as each bears a unique method name
+    # this is just an example
+    @aetest.test
+    def test(self):
+        pass
+
+    @aetest.cleanup
+    def cleanup(self):
+        pass
+    
+
+class checkRoutingTable(aetest.Testcase):
+    '''checkRoutingTable
+
+    < docstring description of this testcase >
+
+    '''
+
+    # testcase groups (uncomment to use)
+    # groups = []
+
+    @aetest.setup
+    def setup(self):
+        pass
+
+    # you may have N tests within each testcase
+    # as long as each bears a unique method name
+    # this is just an example
+    @aetest.test
+    def test(self):
+        pass
+
+    @aetest.cleanup
+    def cleanup(self):
+        pass
+    
+
+
+class CommonCleanup(aetest.CommonCleanup):
+    '''CommonCleanup Section
+
+    < common cleanup docstring >
+
+    '''
+
+    # uncomment to add new subsections
+    # @aetest.subsection
+    # def subsection_cleanup_one(self):
+    #     pass
+```
 
 ## Exercise 5 - Using the Xpresso GUI
 
