@@ -465,7 +465,7 @@ dev = tb.devices['internet-rtr01']
 dev.connect()
 ```
 
-These are just a small collection of some of the available device libraries, you can find all documentation [here](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/quickstart/structureofastatement.html). I would encourage you to experiment a bit with these though and work out some of the tasks you can do with a device.
+These are just a small collection of some of the available device libraries, you can find all documentation [here](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/quickstart/structureofastatement.html). I would encourage you to experiment a bit with these though and work out some of the tasks you can do with a device. In the next section we'll go on to using these in practice when building actual testscases. Don't worry if you don't full understand it yet, the more you get hands on with pyATS the more it will make sense. Particuarly if you're new to Python this can take some time to master.
 
 ## Exercise 4 - Building custom testscases and implementing the pyATS test framework (In progress)
 
@@ -564,6 +564,12 @@ In this example we're going to take our previous test we built in exercise 3 and
 This is a bit of a basic example and not necessarily representative of the real world but the idea here is to understand the logic of building a test. You could however potentially adapt this to test for certain important routes, or a specific desired state. 
 
 As this is just a beginners exercise we don't want to get too indepth just yet.
+
+Now all thatsThere are two ways to run a typical pyATS script:
+
+through pyats run job, which generates log and archives
+as standalone, and prints results to screen
+
 
 ## Exercise 5 - Using the Xpresso GUI
 
