@@ -567,11 +567,6 @@ pyats run job crctest.py --testbed-file ../../../testbed/sandbox-pyats.yaml
 
 You can see this running and its return output from the animation below.
 
-### Conclusion
-
-Congratulations, you've now ran your first couple of network tests using the pyATS framework. Hopefully by now you should have some understanding about how a test is build and how you can start to build your basic testcases. This might seem a bit confusing now but the more comfortable you get with Python and all the features 
-
-
 ### Optional tip: Creating a template test
 
 Sometimes getting started can be a little overwhelming, something which I find helpful is using a little known command in pyATS to create some templates which will show you how you want to layout your testcase.
@@ -644,6 +639,10 @@ class CommonCleanup(aetest.CommonCleanup):
     #     pass
 ```
 
+### Conclusion
+
+Congratulations, you've now ran your first couple of network tests using the pyATS framework. Hopefully by now you should have some understanding about how a test is build and how you can start to build your basic testcases. This might seem a bit confusing now but the more comfortable you get with Python and all the libraries in pyATS you'll start to understand how you can start to leverage it in a more efficent way and eventually it will become second nature. When you get to this level I'd very much recommend joining the [Webex teams [pace](https://eurl.io/#r18UzrQVr) where you can share and learn from the community around pyATS. 
+
 ## Exercise 5 - Using the Xpresso GUI
 
 A work in progress...
@@ -654,4 +653,8 @@ https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/models - Avail
 
 https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers - Available Parsers
 
+https://eurl.io/#r18UzrQVr - Join the Webex teams space
+
 https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/quickstart/structureofastatement.html - Documentation
+
+https://github.com/CiscoTestAutomation/solutions_examples - Example tests
