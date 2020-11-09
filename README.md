@@ -106,7 +106,7 @@ Most popular sandboxes include:
 
 Please note you are free to use this with your own hardware or test environment. However the commands in this lab guide have been tested for the sandboxes they correspond to. For this lab guide we will be using the reservable pyATS XPRESSO Sandbox which can be found on the Sandbox catalogue. You may wish to use your own devices but you will have to modify the code and sample topologies to make them suitable. https://devnetsandbox.cisco.com/RM/Topology
 
-![](https://github.com/sttrayno/Ansible-Lab-Guide/blob/master/images/sandbox-screen.png)
+![](./images/sandbox-screen.png)
 
 ## Exercise 1 - Simple device test and validation with pyATS CLI
 
