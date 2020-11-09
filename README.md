@@ -2,14 +2,14 @@
 
 # Network test and validation with pyATS 
 
-Network testing and validation tools is a massively growing area within network and infrastructure engineering. When you look at the growing interest in network automation and the move towards NetDevOps and CICD pipelines for the network, the need for tools that can carry out test and validation of the network is extremely important. pyATS looks to answer questions such as:
+Network testing and validation tools is a massively growing area within network and infrastructure engineering. When you look at the growing interest in network automation and the move towards NetDevOps and CICD pipelines for the network, the need for tools that can carry out test and validation of the network is extremely important to validate that the change has actually gone through and hasn't impacted the network. pyATS looks to answer questions such as:
 
 - What has changed on the network config?
 - Is my data plane operating the way that I would expect?
 - Can I compare my configuration and operational state against a known good baseline?
 - Can I automate this test process across my entire estate?
 
-Originally developed for internal Cisco engineering use, pyATS/Genie is at the core of Cisco's Test Automation Solution. Some interesting numbers on pyATS current use within Cisco:
+Originally developed for internal Cisco engineering use , pyATS/Genie is at the core of Cisco's Test Automation Solution. Some interesting numbers on pyATS current use within Cisco:
 
 - Used by 3000+ internal Cisco developers
 - Over 2,000,000 test runs on a monthly basis
@@ -36,9 +36,7 @@ Genie builds on pyATS to provide:
 
 For this lab we'll start using with using Genie and getting comfortable then move onto the flexibility that the pyATS framework offers.
 
-### Agnostic Infrastructure
-
-pyATS | Genie is built from the ground up to be an agnostic infrastructure. All OS/Platform and management protocol support is defined and injected through plugins, library implementations & extensions.
+pyATS / Genie is built from the ground up to be an agnostic infrastructure. All OS/Platform and management protocol support is defined and injected through plugins, library implementations & extensions.
 Out of the box, it comes with libraries that support:
 
 - Cisco IOS
