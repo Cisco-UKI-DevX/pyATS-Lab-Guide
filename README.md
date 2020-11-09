@@ -492,14 +492,14 @@ Separating out the job file from the testcases allows us to build reusable tests
 cd tests/exercise4/getting_started 
 ```
 
-In this directory there should be two files
+In this directory there should be two files: ```example_test.py``` our job file and ```example_testscript.py``` our Testcase. Examine both files and get familiar with how they're setup. 
 
-Now all that's left to do is to run our testcase. In pyATS there are two ways to run a typical pyATS script:
+Once your familiar with how the testcase works, now all that's left to do is to run our testcase. In pyATS there are two ways to run a typical pyATS script:
 
 * Through pyats run job, which generates log and archives through the pyATS framework which can be viewed and inspected
 * As standalone, and prints results to screen. 
 
-We'll use the 
+We'll use the pyATS run job command for this example by running the below
 
 ```bash
 pyats run job example_test.py
@@ -511,9 +511,9 @@ However we could also run it standalone and print the results to screen with:
 pyats run example_testscript.py
 ```
 
-Once the testcase runs you should see an output similiar to the below where the tests run through and pass. If you look in the code you can see that testcase1 has 3 parts a setup(), test_1 and test_2. 
+Once the testcase runs you should see an output similiar to the below where the tests run through and pass. However what is it actually doing when it runs? To do that we need to take a look into the code. Looking at testcase1 we can see that has 3 parts a setup(), test_1 and test_2. 
 
-Setup() isn't doing very much and just sets two variables equal to a value
+Setup() isn't doing very much and just sets two variables equal to a value:
 
 ```python
  self.a = 1
