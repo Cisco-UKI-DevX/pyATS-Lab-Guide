@@ -1,15 +1,65 @@
+
 testbed:
-name: Sandbox-Multi-Platform-Network
+  name: Sandbox-Multi-Platform-Network
+  credentials:
+      default:
+        username: cisco
+        password: cisco
 
 devices:
+  terminal_server:
+    os: linux
+    type: linux
+    credentials:
+      default:
+        username: developer
+        password: C1sco12345
+    connections:
+      cli:
+        protocol: ssh
+        ip: 10.10.20.161
+
   internet-rtr01:
     os: iosxe
-    type: csr1000v
+    type: router
+    series: csr1000v
+    connections:
+      cli:
+        protocol: telnet
+        proxy: terminal_server
+        command: open /e65a3c/n0/0
+
+
+~                                                                                                                                                                                                            
+~                                                                                                                                                                                                            
+~                                                                                                                                                                                                            
+~                                                      
+testbed:
+  name: Sandbox-Multi-Platform-Network
   credentials:
-    default:
-       username: cisco
-       password: cisco
-  connections:
-     cli:
-       protocol: ssh
-       ip: 10.10.20.181
+      default:
+        username: cisco
+        password: cisco
+
+devices:
+  terminal_server:
+    os: linux
+    type: linux
+    credentials:
+      default:
+        username: developer
+        password: C1sco12345
+    connections:
+      cli:
+        protocol: ssh
+        ip: 10.10.20.161
+
+  internet-rtr01:
+    os: iosxe
+    type: router
+    series: csr1000v
+    connections:
+      cli:
+        protocol: telnet
+        proxy: terminal_server
+        command: open /e65a3c/n0/0
