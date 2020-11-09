@@ -487,6 +487,8 @@ Separating out the job file from the testcases allows us to build reusable tests
 
 #### Running a basic testcase
 
+Now it's time to look at an actual testcase. If you navigate to the exercise4 directory you will see a folder called getting started which has an example test in there which we can run to see the logic of a test. This is a bit of a basic example and not necessarily representative of the real world but the idea here is to understand the logic of building a test. You could however potentially adapt this to test, but we'll get to that later.
+
 
 ```bash
 cd tests/exercise4/getting_started 
@@ -494,7 +496,7 @@ cd tests/exercise4/getting_started
 
 In this directory there should be two files: ```example_test.py``` our job file and ```example_testscript.py``` our Testcase. Examine both files and get familiar with how they're setup. 
 
-Once your familiar with how the testcase works, now all that's left to do is to run our testcase. In pyATS there are two ways to run a typical pyATS script:
+Once your familiar with how the testcase looks and some of the code within it., now all that's left to do is to run our testcase. In pyATS there are two ways to run a typical pyATS script:
 
 * Through pyats run job, which generates log and archives through the pyATS framework which can be viewed and inspected
 * As standalone, and prints results to screen. 
@@ -538,13 +540,9 @@ else:
        data = {'b': self.b})
 ```
 
-Now obviously this isn't an actual test on the network and is just testing the values of a variable in a script but hopefully you can now see the format of how a test is built and run. In the next stages we'll go onto building a custom test for a specific network scenario.
-
-This is a bit of a basic example and not necessarily representative of the real world but the idea here is to understand the logic of building a test. You could however potentially adapt this to test for certain important routes, or a specific desired state.  
+Now obviously this isn't an actual test on the network and is just testing the values of a variable in a script but hopefully you can now see the format of how a test is built and run. In the next stages we'll go onto building a custom test for a specific network scenario. As this is just a beginners exercise we don't want to get too indepth just yet. For now just make sure you understand how a test runs in pyATS and what each part of the code is doing.
 
 If you feel comfortable enoguh in Python why dont you try have a go at changing the variables and watching the test run to see if it passes or fails? Or even change some of the test criteria.
-
-As this is just a beginners exercise we don't want to get too indepth just yet. For now just make sure you understand how a test runs in pyATS and what each part of the code is doing.
 
 ### Building a custom testcase
 
@@ -571,7 +569,7 @@ You can see this running and its return output from the animation below.
 
 ### Optional tip: Creating a template test
 
-Sometimes getting started building tests from scratch can be overwhelming can be a little overwhelming, something which I find helpful is using a little known command in pyATS to create some templates which will show you how you want to layout your testcase.
+Sometimes getting started building tests from scratch can be overwhelming can be a little overwhelming, something which I find helpful is using a little known command in pyATS to create some templates which will show you how you want to layout your testcase. You can then add your own logic into the template thats created. 
 
 ```bash
 STTRAYNO-M-L0AA:~ sttrayno$ pyats create project
@@ -649,7 +647,7 @@ Congratulations, you've now ran your first couple of network tests using the pyA
 
 A work in progress...
 
-## References and Links
+## References and Links - always being added to
 
 https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/models - Available Models
 
