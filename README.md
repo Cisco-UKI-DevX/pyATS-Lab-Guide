@@ -550,6 +550,28 @@ As this is just a beginners exercise we don't want to get too indepth just yet. 
 
 Now you hopefully understand how a test in pyATS works, we're going to start building a proper test on the network. For this exame we're going to take the example from exercise 3 where we test how many routes exist in the routing table and wrap the aetest framework around it so instead of just printing to the console as we did it will actually run the script as part of a wider test with proper logging and archiving. When a test is also written in the aetest framework it can be ran in Xpresso, which is the GUI for pyATS and will be covered in a later exercise.
 
+### Bonus tests - CRC error check
+
+One of the great things about pyATS is the fact its so widely used you can benefit from the fact other people develop with it! The ultimate repo for loads of existing pyATS test examples can be found [here](https://github.com/CiscoTestAutomation) as a bonus example I've included the CRC error checking test in this repo.
+This really useful test can actually connect to all devices in a testbed, run some commands and return whether or not a devices interface 
+
+This can be found by navigating to the directory:
+
+```
+cd tests/exercise4/bonus
+```
+
+```
+pyats run job crctest.py --testbed-file ../../../testbed/sandbox-pyats.yaml
+```
+
+You can see this running and its return output from the animation below.
+
+### Conclusion
+
+Congratulations, you've now ran your first couple of network tests using the pyATS framework. Hopefully by now you should have some understanding about how a test is build and how you can start to build your basic testcases. This might seem a bit confusing now but the more comfortable you get with Python and all the features 
+
+
 ### Optional tip: Creating a template test
 
 Sometimes getting started can be a little overwhelming, something which I find helpful is using a little known command in pyATS to create some templates which will show you how you want to layout your testcase.
