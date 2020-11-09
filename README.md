@@ -546,7 +546,19 @@ If you feel comfortable enoguh in Python why dont you try have a go at changing 
 
 ### Building a custom testcase
 
-Now you hopefully understand how a test in pyATS works, we're going to start building a proper test on the network. For this exame we're going to take the example from exercise 3 where we test how many routes exist in the routing table and wrap the aetest framework around it so instead of just printing to the console as we did it will actually run the script as part of a wider test with proper logging and archiving. When a test is also written in the aetest framework it can be ran in Xpresso, which is the GUI for pyATS and will be covered in a later exercise.
+Now you hopefully understand how a test in pyATS works, we're going to start building a proper test on the network. For this example we're going to look at an example test built by the community which logs into each device in the testbed and runs a series of pings to test for connectivity from the device. You can find this test from within the tests/exercise4/custom_ping_test directory of this repo. 
+
+```
+cd tests/exercise4/custom_ping_test
+```
+
+You can run the test like in the last example with the `pyats run job` command. Only this time we need to pass in your testbed file with the argument `--testbedfile <path to file>`
+
+```
+pyats run job custom_test_job.py --testbed-file ../../../testbed/sandbox-pyats.yaml 
+```
+
+Let the test run and examine the results, once you've seen how it runs examine the python files to look at whats actually going on when the file runs. Have a think how you could customise this script?
 
 ### Bonus tests - CRC error check
 
