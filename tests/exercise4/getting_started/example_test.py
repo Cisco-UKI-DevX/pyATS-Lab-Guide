@@ -18,7 +18,7 @@ def main():
 
     # find the location of the script in relation to the job file
     script_path = os.path.dirname(os.path.abspath(__file__))
-    testscript = os.path.join(script_path, 'example_test.py')
+    testscript = os.path.join(script_path, 'example_testscript.py')
 
     # execute the testscript
     run(testscript=testscript)
