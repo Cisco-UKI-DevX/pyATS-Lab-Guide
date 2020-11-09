@@ -553,13 +553,15 @@ Now you hopefully understand how a test in pyATS works, we're going to start bui
 ### Bonus tests - CRC error check
 
 One of the great things about pyATS is the fact its so widely used you can benefit from the fact other people develop with it! The ultimate repo for loads of existing pyATS test examples can be found [here](https://github.com/CiscoTestAutomation) as a bonus example I've included the CRC error checking test in this repo.
-This really useful test can actually connect to all devices in a testbed, run some commands and return whether or not a devices interface 
+This really useful test can actually connect to all devices in a testbed, run some commands and return whether or not a devices interface has any CRC errors (you can set the threshold from the crcscript.py file). If there are CRC errors present the test will return a fail.
 
-This can be found by navigating to the directory:
+This test can be found by navigating to the directory:
 
 ```
 cd tests/exercise4/bonus
 ```
+
+and can be ran by using the `pyats run job` command
 
 ```
 pyats run job crctest.py --testbed-file ../../../testbed/sandbox-pyats.yaml
@@ -569,7 +571,7 @@ You can see this running and its return output from the animation below.
 
 ### Optional tip: Creating a template test
 
-Sometimes getting started can be a little overwhelming, something which I find helpful is using a little known command in pyATS to create some templates which will show you how you want to layout your testcase.
+Sometimes getting started building tests from scratch can be overwhelming can be a little overwhelming, something which I find helpful is using a little known command in pyATS to create some templates which will show you how you want to layout your testcase.
 
 ```bash
 STTRAYNO-M-L0AA:~ sttrayno$ pyats create project
