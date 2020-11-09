@@ -20,7 +20,7 @@ Connect
     use genie testbed "${testbed}"
 
     # Connect to both device
-    connect to device "csr1000v-1"
+    connect to device "internet-rtr01"
 
 Profile the devices
-    Profile the system for "config;interface;platform;ospf;arp;routing;vrf;vlan" on devices "csr1000v-1" as "./good_snapshot"
+    Profile the system for "config;interface;platform;ospf;arp;routing;vrf;vlan" on devices "internet-rtr01" as "./good_snapshot"
