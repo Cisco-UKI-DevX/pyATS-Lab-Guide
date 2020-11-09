@@ -565,11 +565,12 @@ This is a bit of a basic example and not necessarily representative of the real 
 
 As this is just a beginners exercise we don't want to get too indepth just yet.
 
-Now all thatsThere are two ways to run a typical pyATS script:
+#### Running our test
 
-through pyats run job, which generates log and archives
-as standalone, and prints results to screen
+Now all that's left to do is to run our testcase. In pyATS there are two ways to run a typical pyATS script:
 
+* Through pyats run job, which generates log and archives through the pyATS framework which can be viewed and inspectd
+* As standalone, and prints results to screen. 
 
 ## Exercise 5 - Using the Xpresso GUI
 
