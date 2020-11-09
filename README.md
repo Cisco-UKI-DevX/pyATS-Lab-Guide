@@ -538,9 +538,11 @@ else:
        data = {'b': self.b})
 ```
 
-Now obviously this isn't an actual test on the network and is just testing the values of a variable in a script but hopefully you can now see the format of how a test is built and run. In the next stages we'll go onto building a custom test for a specific network scenario
+Now obviously this isn't an actual test on the network and is just testing the values of a variable in a script but hopefully you can now see the format of how a test is built and run. In the next stages we'll go onto building a custom test for a specific network scenario.
 
-This is a bit of a basic example and not necessarily representative of the real world but the idea here is to understand the logic of building a test. You could however potentially adapt this to test for certain important routes, or a specific desired state. 
+This is a bit of a basic example and not necessarily representative of the real world but the idea here is to understand the logic of building a test. You could however potentially adapt this to test for certain important routes, or a specific desired state.  
+
+If you feel comfortable enoguh in Python why dont you try have a go at changing the variables and watching the test run to see if it passes or fails? Or even change some of the test criteria.
 
 As this is just a beginners exercise we don't want to get too indepth just yet. For now just make sure you understand how a test runs in pyATS and what each part of the code is doing.
 
