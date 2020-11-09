@@ -396,7 +396,7 @@ routingTable = dev.parse('show ip route')        # Run the command "show ip rout
 routes = len(routingTable['vrf']['default']['address_family']['ipv4']['routes']) # Work out how many routes are in the routing table by working out the length of the routes list from the datastructure returned by pyATS
 
 if routes == 3:
-   print("Pass: The expected number of routes are in the oruting table")
+   print("Pass: The expected number of routes are in the routing table")
 elif routes < 3:
    print("Fail: There are less routes in the routing table than expected")
 elif routes > 3:
@@ -496,7 +496,7 @@ In this directory there should be two files
 
 Now all that's left to do is to run our testcase. In pyATS there are two ways to run a typical pyATS script:
 
-* Through pyats run job, which generates log and archives through the pyATS framework which can be viewed and inspectd
+* Through pyats run job, which generates log and archives through the pyATS framework which can be viewed and inspected
 * As standalone, and prints results to screen. 
 
 We'll use the 
@@ -522,7 +522,6 @@ Setup() isn't doing very much and just sets two variables equal to a value
 
 For test 1 and 2 these are doing are evaluating that the variables a and b are equal to the value that was expected.
 
-
 Test_1: 
 ```python
 assert self.a == 1
@@ -541,7 +540,15 @@ else:
 
 Now obviously this isn't an actual test on the network and is just testing the values of a variable in a script but hopefully you can now see the format of how a test is built and run. In the next stages we'll go onto building a custom test for a specific network scenario
 
-#### Creating a template usecase
+This is a bit of a basic example and not necessarily representative of the real world but the idea here is to understand the logic of building a test. You could however potentially adapt this to test for certain important routes, or a specific desired state. 
+
+As this is just a beginners exercise we don't want to get too indepth just yet. For now just make sure you understand how a test runs in pyATS and what each part of the code is doing.
+
+### Building a custom testcase
+
+Now you hopefully understand how a test in pyATS works, we're going to start building a proper test on the network. For this exame we're going to take the example from exercise 3 where we test how many routes exist in the routing table and wrap the aetest framework around it so instead of just printing to the console as we did it will actually run the script as part of a wider test with proper logging and archiving. When a test is also written in the aetest framework it can be ran in Xpresso, which is the GUI for pyATS and will be covered in a later exercise.
+
+### Optional tip: Creating a template test
 
 Sometimes getting started can be a little overwhelming, something which I find helpful is using a little known command in pyATS to create some templates which will show you how you want to layout your testcase.
 
@@ -555,7 +562,7 @@ Will you be using testcase datafiles [Y/n]: n
 Generating your project...
 ```
 
-#### Testcases
+#### The anatomy - Testcases
 
 When you create your templated examples using the examples above you should have two files `example_test_job.py` and `example_test.py` We'll leave the first file aside for now as all this is really doing is calling our example_test.py which includes the testcase names we defined above. As you can see the test script has three main sections. The first being the CommonSetup() which connects to our devices, the second being our single testcase we defined above, then a CommonCleanup section. If we defined more testcase names from the `pyats create wizard` in the step before we'd have more testcases.
 
@@ -612,12 +619,6 @@ class CommonCleanup(aetest.CommonCleanup):
     # def subsection_cleanup_one(self):
     #     pass
 ```
-
-In this example we're going to take our previous test we built in exercise 3 and adapt it to the aetest framework. Which we're testing if the routing table has 3 routes on it
-
-This is a bit of a basic example and not necessarily representative of the real world but the idea here is to understand the logic of building a test. You could however potentially adapt this to test for certain important routes, or a specific desired state. 
-
-As this is just a beginners exercise we don't want to get too indepth just yet.
 
 ## Exercise 5 - Using the Xpresso GUI
 
