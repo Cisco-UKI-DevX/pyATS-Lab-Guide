@@ -485,6 +485,62 @@ The job file is a single python file which brings together all our testscripts a
 
 Separating out the job file from the testcases allows us to build reusable tests that can be can together and modularly selected when needed.
 
+#### Running a basic testcase
+
+
+```bash
+cd tests/exercise4/getting_started 
+```
+
+In this directory there should be two files
+
+Now all that's left to do is to run our testcase. In pyATS there are two ways to run a typical pyATS script:
+
+* Through pyats run job, which generates log and archives through the pyATS framework which can be viewed and inspectd
+* As standalone, and prints results to screen. 
+
+We'll use the 
+
+```bash
+pyats run job example_test.py
+```
+
+However we could also run it standalone and print the results to screen with: 
+
+```
+pyats run example_testscript.py
+```
+
+Once the testcase runs you should see an output similiar to the below where the tests run through and pass. If you look in the code you can see that testcase1 has 3 parts a setup(), test_1 and test_2. 
+
+Setup() isn't doing very much and just sets two variables equal to a value
+
+```python
+ self.a = 1
+ self.b = 2
+```
+
+For test 1 and 2 these are doing are evaluating that the variables a and b are equal to the value that was expected.
+
+
+Test_1: 
+```python
+assert self.a == 1
+```
+
+Test_2:
+
+```python
+if self.b == 2:
+   self.passed('variable b contains the expected value',
+       data = {'b': self.b})
+else:
+   self.failed('variable b did not contains the expected value',
+       data = {'b': self.b})
+```
+
+Now obviously this isn't an actual test on the network and is just testing the values of a variable in a script but hopefully you can now see the format of how a test is built and run. In the next stages we'll go onto building a custom test for a specific network scenario
+
 #### Creating a template usecase
 
 Sometimes getting started can be a little overwhelming, something which I find helpful is using a little known command in pyATS to create some templates which will show you how you want to layout your testcase.
@@ -563,14 +619,9 @@ This is a bit of a basic example and not necessarily representative of the real 
 
 As this is just a beginners exercise we don't want to get too indepth just yet.
 
-#### Running our test
-
-Now all that's left to do is to run our testcase. In pyATS there are two ways to run a typical pyATS script:
-
-* Through pyats run job, which generates log and archives through the pyATS framework which can be viewed and inspectd
-* As standalone, and prints results to screen. 
-
 ## Exercise 5 - Using the Xpresso GUI
+
+A work in progress...
 
 ## References and Links
 
