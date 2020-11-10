@@ -37,7 +37,8 @@ Genie builds on pyATS to provide:
 For this lab we'll start using with using Genie and getting comfortable then move onto the flexibility that the pyATS framework offers.
 
 pyATS / Genie is built from the ground up to be an agnostic infrastructure. All OS/Platform and management protocol support is defined and injected through plugins, library implementations & extensions.
-Out of the box, it comes with libraries that support:
+
+Out of the box, it comes with parsers that that support:
 
 - Cisco IOS
 - Cisco IOXE
@@ -45,9 +46,9 @@ Out of the box, it comes with libraries that support:
 - Cisco NXOS
 - Cisco ASA
 
-... etc
-and allows the device connections via CLI, NETCONF, or RESTCONF.
-Additional support for 3rd-party platforms and other management protocols can be easily achieved through plugins and library extensions.
+Additional support for 3rd-party platforms and other management protocols can be easily achieved through plugins and library extensions, you can find more on this from the official documentation.
+
+One the the benefits of pyATS are also models which allow you as a test developer to 'learn' about a specific feature in a device agnostic way, it shouldn't matter about the operating system running on the device or the outputs, am individual can build a specific test and expect it to work across these different platforms. pyATS supports today around 30 of these models.
 
 As you go deeper and deeper into pyATS and Genie you'll start to realise how many scenarios it could be applied to. If you'd like to go further than this guide please see the DevNet webpage on pyATS which is a fantastic resource and should be anyone who's trying to get hands on first port of call. https://developer.cisco.com/docs/pyats/#!pyats-genie-on-devnet/pyats-genie-on-devnet
 
@@ -670,3 +671,4 @@ https://eurl.io/#r18UzrQVr - Join the Webex teams space
 https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/quickstart/structureofastatement.html - Documentation
 
 https://github.com/CiscoTestAutomation/solutions_examples - Example tests
+
