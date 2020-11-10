@@ -514,6 +514,8 @@ We'll use the pyATS run job command for this example by running the below
 pyats run job example_test.py
 ```
 
+![](./images/exercise4_getting_started.gif)
+
 However we could also run it standalone and print the results to screen with: 
 
 ```
@@ -584,6 +586,8 @@ and can be ran by using the `pyats run job` command
 ```
 pyats run job crctest.py --testbed-file ../../../testbed/sandbox-pyats.yaml
 ```
+
+![](./images/crctest.gif)
 
 You can see this running and its return output from the animation below.
 
