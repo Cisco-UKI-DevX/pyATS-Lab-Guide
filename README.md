@@ -199,6 +199,12 @@ pip list | grep robot
 
 The robot framework allows us to incorporate a bit more automation within our pyATS tests whilst abstracting away from some of the underlying Python which can be a barrier to entry for getting started with pyATS as we currently are. In this exercise we'll explore two Robot test plans which will automate the testing and reporting of our testbed environments.
 
+You can find the robot test plans by going into the `exercise2/robot-tests` directory
+
+```
+cd exercise2/robot-tests
+```
+
 Lets take a further look at the test cases now. First open up the file robot_initial_snapshot.robot and you should see something similar to the below.
 
 ![](./images/robot-test-initial.png)
