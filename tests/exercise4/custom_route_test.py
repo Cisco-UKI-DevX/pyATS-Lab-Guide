@@ -52,36 +52,29 @@ class CommonSetup(aetest.CommonSetup):
 #                     TESTCASES SECTION                           #
 ###################################################################
 
-class running_vs_startup(aetest.Testcase):
+class routeTest(aetest.Testcase):
     @aetest.setup
     def setup(self, testbed):
         """Parse config archive from the testbed devices."""
-        self.configs = {}
+        self.routes = {}
         for device_name, device in testbed.devices.items():
             # Only attempt to learn details on supported network operation systems
             if device.os in ("iosxe"):
                 logger.info(f"{device_name} connected status: {device.connected}")
-                logger.info(f"Learning configs for {device_name}")
+                logger.info(f"Learning route table for {device_name}")
                 routeTable = device.parse("show ip route")
+                self.routes[device_name] = {}
                 self.routes[device_name]['routeTable'] = routeTable
+		
+                logger.info(self.routes[device_name]['routeTable'])
+
+                logger.info(len(self.routes[device_name]['routeTable']['vrf']['default']['address_family']['ipv4']['routes']))
+
+                if len(self.routes[device_name]['routeTable']['vrf']['default']['address_family']['ipv4']['routes']) == 5:
+                         self.passed()
+                else:
+                         self.failed()
                 
-                
-
-    def test(self, steps):
-        # Loop over every device with learnt configs
-        for device_name in self.routes.items():
-            with steps.start(
-                f"Checking route table {device_name}", continue_=True
-            ) as device_step:
-                # Get rid of certificate comparison, as "service private-config-encryption" won't show them
-
-                if len(self.routes[device_name]['routeTable']) == 5:
-                    device_step.pass(
-                        f'Device {device_name} has the correct number of routes:')
-                else
-                    device_step.fail(
-                        f'Device {device_name} has an incorrect number of routes:')
-
 
 class CommonCleanup(aetest.CommonCleanup):
     """CommonCleanup Section
