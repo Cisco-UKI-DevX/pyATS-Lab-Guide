@@ -63,7 +63,25 @@ class running_vs_startup(aetest.Testcase):
                 logger.info(f"{device_name} connected status: {device.connected}")
                 logger.info(f"Learning configs for {device_name}")
                 routeTable = device.parse("show ip route")
-                print(routeTable)
+                self.routes[device_name]['routeTable'] = routeTable
+                
+                
+
+    def test(self, steps):
+        # Loop over every device with learnt configs
+        for device_name in self.routes.items():
+            with steps.start(
+                f"Checking route table {device_name}", continue_=True
+            ) as device_step:
+                # Get rid of certificate comparison, as "service private-config-encryption" won't show them
+
+                if len(self.routes[device_name]['routeTable']) == 5:
+                    device_step.pass(
+                        f'Device {device_name} has the correct number of routes:')
+                else
+                    device_step.fail(
+                        f'Device {device_name} has an incorrect number of routes:')
+
 
 class CommonCleanup(aetest.CommonCleanup):
     """CommonCleanup Section
