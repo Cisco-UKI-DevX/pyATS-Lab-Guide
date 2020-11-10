@@ -1,12 +1,6 @@
 # see https://pubhub.devnetcloud.com/media/pyats/docs/aetest/index.html
 # for documentation on pyATS test scripts
 
-__author__ = "Oren Brigg"
-__copyright__ = "Copyright (c) 2020, Cisco Systems Inc."
-__contact__ = ["obrigg@cisco.com"]
-__credits__ = ["hapresto@cisco.com"]
-__version__ = 1.0
-
 import logging
 
 from pyats import aetest
