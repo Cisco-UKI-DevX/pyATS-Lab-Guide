@@ -260,7 +260,7 @@ If you have not made any config changes on the device this test would run succes
 
 Congratulations, you should now have a grasp of the very basics of the Robot framework.
 
-## Exercise 3 - Exploring the pyATS python libraries
+## Exercise 3 - Exploring the pyATS python libraries to work with devices
 
 Now we have an understanding of what pyATS actually does, it's time to build on this with the pyATS libraries. As you should of now seen, one of the strengths of pyATS is the extremely powerful parsers and models which allow us to collect raw data from the CLI into abstracted JSON data models which then allow us to do comparisons and test for specific criteria. When using the pyATS CLI we're limited in what we can do to just a few commands and basic comparisons. However as the pyATS libraries are built on top of python we can actually use them to build more complex test cases. In this section we'll explore some of the capabilities of the pyATS framework and how we can start to built our own custom tests for devices by using some of the Python libraries available to us.
 
@@ -465,7 +465,7 @@ dev.connect()
 
 These are just a small collection of some of the available device libraries, you can find all documentation [here](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/quickstart/structureofastatement.html). I would encourage you to experiment a bit with these though and work out some of the tasks you can do with a device. In the next section we'll go on to using these in practice when building actual testscases. Don't worry if you don't full understand it yet, the more you get hands on with pyATS the more it will make sense. Particuarly if you're new to Python this can take some time to master.
 
-## Exercise 4 - Building custom testscases and implementing the pyATS test framework (In progress)
+## Exercise 4 - Building custom testscases and implementing the pyATS test framework
 
 Now we have an understanding of how we can profile and work with devices, it's time to look at how we can work the the actual test framework to tell us the user if a test has passed or failed. You might think we've already done that in the previous exercise, however theres a bit more to it than just printing out a pass or fail to the console. Imagine a situation where you're running hundreds of complex tests, you want a quick way to flag to the user which tests have passed or failed. That is where the aetest framework comes in handy.
 
