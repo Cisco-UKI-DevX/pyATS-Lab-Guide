@@ -553,7 +553,7 @@ Now obviously this isn't an actual test on the network and is just testing the v
 
 If you feel comfortable enoguh in Python why dont you try have a go at changing the variables and watching the test run to see if it passes or fails? Or even change some of the test criteria.
 
-### Building a custom testcase - "Ping Test"
+### Building a custom testcase - "Route Test"
 
 Now you hopefully understand how a test in pyATS works, we're going to start building a proper test on the network. For this example we're going to look at taking our very rudimentary test from exercise 3 bwhich logs into each device in the testbed and runs a checks how many routes are in the routing table. If it is in our case 5 the test will pass, if it is any different the test will fail. You can find the code for this test from within the tests/exercise4/custom_route_test directory of this repo. 
 
