@@ -382,7 +382,7 @@ The flexibility of the pyATS framework is really what makes this powerful and wi
 
 ![](./images/test-workflow.png)
 
-Putting together all of the components above we now have a reusable test for the device internet-rtr01 to check if the device has 3 routes and returns a pass or fail. As can be seen below, experiment with this test a few times and try for different results by adding in some config to the sandbox device. 
+Putting together all of the components above we now have a reusable test for the device internet-rtr01 to check if the device has 5 routes and returns a pass or fail. As can be seen below, experiment with this test a few times and try for different results by adding in some config to the sandbox device. 
 
 Note: I wouldnt recommend removing routes from the device, you might loose connectivity, try adding some static routes instead to the device and run the test a few times.
 
@@ -402,11 +402,11 @@ routingTable = dev.parse('show ip route')        # Run the command "show ip rout
 
 routes = len(routingTable['vrf']['default']['address_family']['ipv4']['routes']) # Work out how many routes are in the routing table by working out the length of the routes list from the datastructure returned by pyATS
 
-if routes == 3:
+if routes == 5:
    print("Pass: The expected number of routes are in the routing table")
-elif routes < 3:
+elif routes < 5:
    print("Fail: There are less routes in the routing table than expected")
-elif routes > 3:
+elif routes > 5:
    print("Fail: There are more routes in the routing table than expected")
 
 ```
@@ -553,23 +553,24 @@ If you feel comfortable enoguh in Python why dont you try have a go at changing 
 
 ### Building a custom testcase - "Ping Test"
 
-Now you hopefully understand how a test in pyATS works, we're going to start building a proper test on the network. For this example we're going to look at an example test built by the community which logs into each device in the testbed and runs a series of pings to test for connectivity from the device. You can find this test from within the tests/exercise4/custom_ping_test directory of this repo. 
+Now you hopefully understand how a test in pyATS works, we're going to start building a proper test on the network. For this example we're going to look at taking our very rudimentary test from exercise 3 bwhich logs into each device in the testbed and runs a checks how many routes are in the routing table. If it is in our case 5 the test will pass, if it is any different the test will fail. You can find the code for this test from within the tests/exercise4/custom_route_test directory of this repo. 
 
 ```
-cd tests/exercise4/custom_ping_test
+cd tests/exercise4/custom_route_test
 ```
 
 You can run the test like in the last example with the `pyats run job` command. Only this time we need to pass in your testbed file with the argument `--testbedfile <path to file>`
 
 ```
-pyats run job custom_test_job.py --testbed-file ../../../testbed/sandbox-pyats.yaml 
+pyats run job custom_route_test_job.py --testbed-file ../../../testbed/testbed.yaml 
 ```
 
 Let the test run and examine the results, once you've seen how it runs examine the python files to look at whats actually going on when the file runs. Have a think how you could customise this script?
 
-### Bonus tests - "CRC error check"
+### Bonus tests - "CRC error check" / "Ping Test"
 
-One of the great things about pyATS is the fact its so widely used you can benefit from the fact other people develop with it! The ultimate repo for loads of existing pyATS test examples can be found [here](https://github.com/CiscoTestAutomation) as a bonus example I've included the CRC error checking test in this repo.
+One of the great things about pyATS is the fact its so widely used you can benefit from the fact other people develop with it! The ultimate repo for loads of existing pyATS test examples can be found [here](https://github.com/CiscoTestAutomation) as a bonus example I've included the CRC error checking test and a Ping test checking test in this repo for you to experiment with.
+
 This really useful test can actually connect to all devices in a testbed, run some commands and return whether or not a devices interface has any CRC errors (you can set the threshold from the crcscript.py file). If there are CRC errors present the test will return a fail.
 
 This test can be found by navigating to the directory:
