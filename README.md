@@ -567,6 +567,8 @@ You can run the test like in the last example with the `pyats run job` command. 
 pyats run job custom_route_test_job.py --testbed-file ../../../testbed/testbed.yaml 
 ```
 
+![](/images/custom-route.gif)
+
 Let the test run and examine the results, once you've seen how it runs examine the python files to look at whats actually going on when the file runs. Have a think how you could customise this script?
 
 ### Bonus tests - "CRC error check" / "Ping Test"
