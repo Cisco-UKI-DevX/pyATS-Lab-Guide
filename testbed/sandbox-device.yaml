@@ -1,10 +1,22 @@
-
 testbed:
   name: Sandbox-Multi-Platform-Network
   credentials:
       default:
         username: cisco
         password: cisco
+
+devices:
+  terminal_server:
+    os: linux
+    type: linux
+    credentials:
+      default:
+        username: developer
+        password: C1sco12345
+    connections:
+      cli:
+        protocol: ssh
+        ip: 10.10.20.161
 
   internet-rtr01:
     os: iosxe
@@ -15,3 +27,4 @@ testbed:
         protocol: telnet
         proxy: terminal_server
         command: open /e65a3c/n0/0
+
