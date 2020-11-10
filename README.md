@@ -604,6 +604,7 @@ Testcase names [enter to finish]:
 Will you be using testcase datafiles [Y/n]: n
 Generating your project...
 ```
+![](./images/create-template.gif)
 
 #### The anatomy - Testcases
 
