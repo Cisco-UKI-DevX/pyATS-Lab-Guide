@@ -485,7 +485,7 @@ The job file is a single python file which brings together all our testscripts a
 
 Separating out the job file from the testcases allows us to build reusable tests that can be can together and modularly selected when needed.
 
-#### Running a basic testcase
+### Running a basic testcase - "Hello World"
 
 Now it's time to look at an actual testcase. If you navigate to the exercise4 directory you will see a folder called getting started which has an example test in there which we can run to see the logic of a test. This is a bit of a basic example and not necessarily representative of the real world but the idea here is to understand the logic of building a test. You could however potentially adapt this to test, but we'll get to that later.
 
@@ -544,7 +544,7 @@ Now obviously this isn't an actual test on the network and is just testing the v
 
 If you feel comfortable enoguh in Python why dont you try have a go at changing the variables and watching the test run to see if it passes or fails? Or even change some of the test criteria.
 
-### Building a custom testcase
+### Building a custom testcase - "Ping Test"
 
 Now you hopefully understand how a test in pyATS works, we're going to start building a proper test on the network. For this example we're going to look at an example test built by the community which logs into each device in the testbed and runs a series of pings to test for connectivity from the device. You can find this test from within the tests/exercise4/custom_ping_test directory of this repo. 
 
@@ -560,7 +560,7 @@ pyats run job custom_test_job.py --testbed-file ../../../testbed/sandbox-pyats.y
 
 Let the test run and examine the results, once you've seen how it runs examine the python files to look at whats actually going on when the file runs. Have a think how you could customise this script?
 
-### Bonus tests - CRC error check
+### Bonus tests - "CRC error check"
 
 One of the great things about pyATS is the fact its so widely used you can benefit from the fact other people develop with it! The ultimate repo for loads of existing pyATS test examples can be found [here](https://github.com/CiscoTestAutomation) as a bonus example I've included the CRC error checking test in this repo.
 This really useful test can actually connect to all devices in a testbed, run some commands and return whether or not a devices interface has any CRC errors (you can set the threshold from the crcscript.py file). If there are CRC errors present the test will return a fail.
@@ -579,7 +579,7 @@ pyats run job crctest.py --testbed-file ../../../testbed/sandbox-pyats.yaml
 
 You can see this running and its return output from the animation below.
 
-### Optional tip: Creating a template test
+### *Optional tip: Creating a template test
 
 Sometimes getting started building tests from scratch can be overwhelming can be a little overwhelming, something which I find helpful is using a little known command in pyATS to create some templates which will show you how you want to layout your testcase. You can then add your own logic into the template thats created. 
 
