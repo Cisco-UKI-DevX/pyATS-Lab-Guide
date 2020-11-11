@@ -26,4 +26,4 @@ Profile the devices
     Profile the system for "config;interface;platform;ospf;arp;routing;vrf;vlan" on devices "internet-rtr01" as "./new_snapshot"
 
 Compare snapshots
-    Compare profile "../robot_initial_snapshot/good_snapshot" with "./new_snapshot" on devices "internet-rtr01"
+    Compare profile "./good_snapshot" with "./new_snapshot" on devices "internet-rtr01"
