@@ -218,7 +218,7 @@ The next section is where it begins to get interesting, as you can see we have 2
 The second test is we're learning from the device with the profile, as we can see from the input we're looking to profile the config, interface, platform, OSPF, arp, routing, vrf and VLAN. These could be customized depending on what you're looking to learn. Finally you'll see this output of this profile being stored into the directory ./good_snapshot
 
 ```bash
-Robot --outputdir run robot_initial_snapshot.robot
+robot --outputdir run robot_initial_snapshot.robot
 ```
 
 ![](./images/robot-initial.gif)
@@ -252,7 +252,7 @@ As we're looking to compare from our baseline to our most recent snapshot it mig
 Now we understand what the test case is doing lets run the profile. Use the command below, this time passing the compare test case we just looked at.
 
 ```bash
-Robot --outputdir run robot_compare_snapshot.robot`
+robot --outputdir run robot_compare_snapshot.robot`
 ```
 
 ![](./images/robot-compare.gif)
