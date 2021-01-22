@@ -516,10 +516,10 @@ pyats run job example_test.py
 
 ![](./images/exercise4_getting_started.gif)
 
-However we could also run it standalone and print the results to screen with: 
+However we could also run it standalone with just Python and print the results to screen with: 
 
 ```
-pyats run example_testscript.py
+python3 example_testscript.py
 ```
 
 Once the testcase runs you should see an output similiar to the below where the tests run through and pass. However what is it actually doing when it runs? To do that we need to take a look into the code. Looking at testcase1 we can see that has 3 parts a setup(), test_1 and test_2. 
