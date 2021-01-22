@@ -292,7 +292,7 @@ For this session we will be using text files to read and parse device output fro
 
 ```python
 
-tb = load('./testbed/testbed-device.yaml')       # Load our testbed file from a file.
+tb = load('./testbed/sandbox-device.yaml')       # Load our testbed file from a file.
 dev = tb.devices['internet-rtr01']       # Define an object called dev from the device named csr1000v
 
 dev.connect()      # Connect to the object dev we defined earlier -  this must be done before parsing to the device
@@ -369,11 +369,11 @@ Now we've got the data, it's a matter of building our logic to test for the exac
 ```python
 routes = len(routingTable['vrf']['default']['address_family']['ipv4']['routes'])
 
-if routes == 3:
+if routes == 5:
    print("Pass: The expected number of routes are in the routing table")
-elif routes < 3:
+elif routes < 5:
    print("Fail: There are less routes in the routing table than expected")
-elif routes > 3:
+elif routes > 5:
    print("Fail: There are more routes in the routing table than expected")
 
 ```
@@ -393,7 +393,7 @@ from genie.utils import Dq
 from genie.testbed import load
 import json
 
-tb = load('./testbed/testbed.yaml')       # Load our testbed file from a file.
+tb = load('./testbed/sandbox-device.yaml')       # Load our testbed file from a file.
 dev = tb.devices['internet-rtr01']       # Define an object called dev from the device named csr1000v
 
 dev.connect()      # Connect to the object dev we defined earlier -  this must be done before parsing to the device
